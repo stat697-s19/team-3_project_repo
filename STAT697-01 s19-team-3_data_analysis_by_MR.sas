@@ -9,44 +9,43 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 *
-Question: Is there evidence that countries with a greater % of "Inequality of 
-Education" also suffer from greater poverty as measured by the "Multidimensional
+Question: Can the % of "Education" under "Contribution of deprivation in 
+dimension to overall poverty" be used to predict the country's "Multidimensional 
 Poverty Index"?
-Rationale: This would indicate if there is an assocation between eduaction 
-inequality and poverty, and if the former can be an indicator of poverty in a 
-country.
+Rationale: A correlation between the percent of education and the MPI will 
+determine if education really is a significant agent to combat poverty.
+Note: This compares the column "Contribution of deprivation in dimention to 
+overall poverty" from 2018 Statistical Annex Table 6 to the column 
+"Multidimensional Poverty Index" from 2018 Statistical Annex Table 6.
+;
+
+
+*******************************************************************************;
+* Research Question Analysis Starting Point;
+*******************************************************************************;
+*
+Question: Is there a strong association between "Mean years of schooling" by 
+country for both M and F and the "Human Development Index"?
+Rationale: A strong assocation would show whether the HDI is appropriately 
+measured by the years of schooling and not by national income or life 
+expectancy and vice versa.
+Note: This compares the column "Mean years of schooling" from 2018 Statistical 
+Annex Table 4 to the column "Human Development Index" from 2018 Statistical 
+Annex Table 4.
+
+
+*******************************************************************************;
+* Research Question Analysis Starting Point;
+*******************************************************************************;
+*
+Question: Is there a negative correlation between countries with a greater % of 
+"Inequality of Education" and "Human Development Index" and does this 
+correlation follow a similarly negative correlation with "Inequality in life 
+expectancy"
+Rationale: This would help to show whether life expectancy can forecast 
+"expected" education and if that "expected" education contributes to the HDI.
 Note: This compares the column "Inequality of Education" from 2018 Statistical 
-Annex Table 3 to the column "Multidimensional Poverty Index" from 2018 
-Statistical Annex Table 6.
-;
-
-
-*******************************************************************************;
-* Research Question Analysis Starting Point;
-*******************************************************************************;
-*
-Question: Is there a strong association between "Mean years of schooling" and 
-the "Multidimensional Poverty Index" by gender?
-Rationale: This would show is their is an association between average years of 
-schooling and poverty levels per country, and would also indicate if their is a
-significant difference in the strength of assocation by gender.
-Note: This compares the columns "Female" and "Male" under "Mean years of schooling" 
-from 2018 Statistical Annex Table 4 each to the column "Multudimensional Poverty 
-Index" from 2018 Statistical Annex Table 6.
-;
-
-
-*******************************************************************************;
-* Research Question Analysis Starting Point;
-*******************************************************************************;
-*
-Question: Can % of "Population living below the income poverty line", specifically, 
-the "national poverty line" for 2006-2017 be used to predict the country's "Human
-Development Index (HDI)"?
-Rationale: This can help to see how poverty levels are associated with a country's 
-Human Development Index value, which assesses a country's development.
-Note: This compares the column "National poverty line" from 2018 Statistical 
-Annex Table 6 to the column "Human Devlopment Index (HDI)" from 2018 Statistical
+Annex Table 3 to the column "Human Development Index" from 2018 Statistical 
 Annex Table 3.
 ;
 
