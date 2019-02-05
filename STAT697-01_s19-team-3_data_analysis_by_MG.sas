@@ -14,8 +14,13 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 *******************************************************************************;
 *
 Question: Which country has the highest inequaality-adjusted education index?
-Rationale: This should help identify the which country has the lowest education index and make appropriate action
-Note: This compares the column "Country" to the column of "Inequality-adjusted life expectancy Index from 2018 Statistical_Annex_Table_3.
+
+Rationale: This should help identify the which country has the lowest education 
+index and make appropriate action 
+
+Note: This compares the column "Country" to 
+the column of "Inequality-adjusted life expectancy Index from 2018 
+Statistical_Annex_Table_3.
 ;
 
 
@@ -24,8 +29,13 @@ Note: This compares the column "Country" to the column of "Inequality-adjusted l
 *******************************************************************************;
 *
 Question: What is the correleation between year of school and income per capita?
-Rationale: This should help demonstrate whehter school can be a important factor in national income value.
-Note: This compares the column "Expected years of schooling" to the column "Estimated gross national income per capita" from 2018 Statistical_Annex_Table_4
+
+Rationale: This should help demonstrate whehter school can be a important factor 
+in national income value. 
+
+Note: This compares the column "Expected years of 
+schooling" to the column "Estimated gross national income per capita" from 
+2018 Statistical_Annex_Table_4
 ;
 
 
@@ -34,6 +44,11 @@ Note: This compares the column "Expected years of schooling" to the column "Esti
 *******************************************************************************;
 *
 Question:Which country is experiencing the most severe multidimensional poverty?
-Rationale: This should help Non-profit organizaion to appropriate allocate resources to the needest country.
-Note: This compares the column "Country" from sat15 to the column "Population in severe multidimensional poverty from 2018 Statistical_Annex_Table_6.
+
+Rationale: This should help Non-profit organizaion to appropriate allocate 
+resources to the needest country. 
+
+Note: This compares the column "Country" from 
+sat15 to the column "Population in severe multidimensional poverty from 2018 
+Statistical_Annex_Table_6.
 ;
