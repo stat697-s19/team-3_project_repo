@@ -1,3 +1,8 @@
+*******************************************************************************;
+**************** 80-character banner for column width reference ***************;
+* (set window width to banner width to calibrate line length to 80 characters *;
+*******************************************************************************;
+
 *
 [Dataset 1 Name] 2018 Statistical Annex Table 6
 
@@ -5,20 +10,22 @@
 
 [Experimental Unit Description] Countries from around the world
 
-[Number of Observations] 1,365                    [Number of Features] 13
+[Number of Observations] 1,365                    
+
+[Number of Features] 13
 
 [Data Source] http://hdr.undp.org/sites/default/files/composite_tables/2018_Statistical_Annex_Table_6.xlsx
 
 [Data Dictionary] http://hdr.undp.org/en//2018-MPI
 
-[Unique ID Schema] The column "Country" is the unique primary key.;
-
-
+[Unique ID Schema] The column "Country" is the unique primary key.
+;
 %let inputDataset1DSN = 2018_Statistical_Annex_Table_6;
 %let inputDataset1URL =
 https://github.com/mgao10-stat697/team-3_project_repo/blob/master/data/2018_Statistical_Annex_Table_6.xlsx?raw=true
 ;
 %let inputDataset1Type = XLSX;
+
 
 *
 [Dataset 2 Name] 2018 Statistical Annex Table 4
@@ -27,7 +34,9 @@ https://github.com/mgao10-stat697/team-3_project_repo/blob/master/data/2018_Stat
 
 [Experimental Unit Description] Countries from around the world
 
-[Number of Observations] 2,268                    [Number of Features] 12
+[Number of Observations] 2,268                    
+
+[Number of Features] 12
 
 [Data Source] http://hdr.undp.org/sites/default/files/composite_tables/2018_Statistical_Annex_Table_4.xlsx
 
@@ -35,13 +44,14 @@ https://github.com/mgao10-stat697/team-3_project_repo/blob/master/data/2018_Stat
 
 [Unique ID Schema] The columns "HDI rank" and "Country" form a composite key, 
 which together are equivalent to the composite key in dataset 2018 Statistical 
-Annex Table 3.;
-
+Annex Table 3.
+;
 %let inputDataset1DSN = 2018_Statistical_Annex_Table_4;
 %let inputDataset1URL =
 https://github.com/mgao10-stat697/team-3_project_repo/blob/master/data/2018_Statistical_Annex_Table_4.xlsx?raw=true
 ;
 %let inputDataset1Type = XLSX;
+
 
 *
 [Dataset 3 Name] 2018 Statistical Annex Table 3
@@ -50,7 +60,9 @@ https://github.com/mgao10-stat697/team-3_project_repo/blob/master/data/2018_Stat
 
 [Experimental Unit Description] Countries from around the world
 
-[Number of Observations] 2,646                    [Number of Features] 14
+[Number of Observations] 2,646                    
+
+[Number of Features] 14
 
 [Data Source] http://hdr.undp.org/sites/default/files/composite_tables/2018_Statistical_Annex_Table_3.xlsx
 
@@ -58,13 +70,14 @@ https://github.com/mgao10-stat697/team-3_project_repo/blob/master/data/2018_Stat
 
 [Unique ID Schema] The columns "HDI rank" and "Country" form a composite key, 
 which together are equivalent to the composite key in dataset 2018 Statistical 
-Annex Table 4.;
-
+Annex Table 4.
+;
 %let inputDataset1DSN = 2018_Statistical_Annex_Table_3;
 %let inputDataset1URL =
 https://github.com/mgao10-stat697/team-3_project_repo/blob/master/data/2018_Statistical_Annex_Table_3.xlsx?raw=true
 ;
 %let inputDataset1Type = XLSX;
+
 
 * load raw datasets over the wire, if they doesn't already exist;
 %macro loadDataIfNotAlreadyAvailable(dsn,url,filetype);
