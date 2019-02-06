@@ -22,7 +22,7 @@
 ;
 %let inputDataset1DSN = 2018_Statistical_Annex_Table_6;
 %let inputDataset1URL =
-https://github.com/mgao10-stat697/team-3_project_repo/blob/master/data/2018_Statistical_Annex_Table_6.xlsx?raw=true
+https://github.com/stat697/team-3_project_repo/blob/master/data/2018_Statistical_Annex_Table_6.xlsx?raw=true
 ;
 %let inputDataset1Type = XLSX;
 
@@ -48,7 +48,7 @@ Annex Table 3.
 ;
 %let inputDataset1DSN = 2018_Statistical_Annex_Table_4;
 %let inputDataset1URL =
-https://github.com/mgao10-stat697/team-3_project_repo/blob/master/data/2018_Statistical_Annex_Table_4.xlsx?raw=true
+https://github.com/stat697/team-3_project_repo/blob/master/data/2018_Statistical_Annex_Table_4.xlsx?raw=true
 ;
 %let inputDataset1Type = XLSX;
 
@@ -74,7 +74,7 @@ Annex Table 4.
 ;
 %let inputDataset1DSN = 2018_Statistical_Annex_Table_3;
 %let inputDataset1URL =
-https://github.com/mgao10-stat697/team-3_project_repo/blob/master/data/2018_Statistical_Annex_Table_3.xlsx?raw=true
+https://github.com/stat697/team-3_project_repo/blob/master/data/2018_Statistical_Annex_Table_3.xlsx?raw=true
 ;
 %let inputDataset1Type = XLSX;
 
