@@ -20,7 +20,7 @@
 
 [Unique ID Schema] The column "Country" is the unique primary key.
 ;
-%let inputDataset1DSN = 2018_Statistical_Annex_Table_6;
+%let inputDataset1DSN = HDR_Table_6;
 %let inputDataset1URL =
 https://github.com/stat697/team-3_project_repo/blob/master/data/2018_Statistical_Annex_Table_6.xlsx?raw=true
 ;
@@ -46,7 +46,7 @@ https://github.com/stat697/team-3_project_repo/blob/master/data/2018_Statistical
 which together are equivalent to the composite key in dataset 2018 Statistical 
 Annex Table 3.
 ;
-%let inputDataset1DSN = 2018_Statistical_Annex_Table_4;
+%let inputDataset1DSN = HDR_Table_4;
 %let inputDataset1URL =
 https://github.com/stat697/team-3_project_repo/blob/master/data/2018_Statistical_Annex_Table_4.xlsx?raw=true
 ;
@@ -72,7 +72,7 @@ https://github.com/stat697/team-3_project_repo/blob/master/data/2018_Statistical
 which together are equivalent to the composite key in dataset 2018 Statistical 
 Annex Table 4.
 ;
-%let inputDataset1DSN = 2018_Statistical_Annex_Table_3;
+%let inputDataset1DSN = HDR_Table_3;
 %let inputDataset1URL =
 https://github.com/stat697/team-3_project_repo/blob/master/data/2018_Statistical_Annex_Table_3.xlsx?raw=true
 ;
