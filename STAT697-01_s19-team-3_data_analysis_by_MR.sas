@@ -1,4 +1,3 @@
-
 *******************************************************************************;
 **************** 80-character banner for column width reference ***************;
 * (set window width to banner width to calibrate line length to 80 characters *;
@@ -9,7 +8,6 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 
 * load external file that will generate final analytic file;
 %include '.\STAT697-01_s19-team-3_data_preparation.sas';
-
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
@@ -61,4 +59,3 @@ Note: This compares the column "Inequality of Education" from 2018 Statistical
 Annex Table 3 to the column "Human Development Index" from 2018 Statistical 
 Annex Table 3.
 ;
-
