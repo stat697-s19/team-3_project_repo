@@ -193,3 +193,10 @@ create table Annex_Table_6_dups_fix as
 quit;
 
 
+*Ming's Reseach Question Column
+
+
+*Mariano's Research Question Column
+
+
+*Mariela's Research Question Column
