@@ -192,6 +192,9 @@ create table Annex_Table_6_dups_fix as
 quit;
 
 
+*Ming's Research Question Column
+
+*inspect columns of interest in cleaned versions of datasets;
 
 title "Inspect the adjusted life expentacy index from Statistical_2018_Annex_Table_3 dataset";
 proc sql;
