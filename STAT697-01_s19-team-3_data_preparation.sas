@@ -249,7 +249,107 @@ proc sql;
 quit;
 title;
 
-*Mariano's Research Question Column
+*Mariano's Research Question Column;
+
+
+title "Inspect Percent education contribution of deprivation";
+proc sql;
+	select
+	 min(Percent_education_contribution_o) as min
+	,max(Percent_education_contribution_o) as max
+	,mean(Percent_education_contribution_o) as max
+	,median(Percent_education_contribution_o) as max
+	,nmiss(Percent_education_contribution_o) as missing
+	from 
+	Statistical_2018_annex_table_6
+	;
+quit;
+title;
+
+title "Inspect Multidimensional Poverty Index";
+proc sql;
+	select
+	 min(Multidimensional_Poverty_Index) as min
+	,max(Multidimensional_Poverty_Index) as max
+	,mean(Multidimensional_Poverty_Index) as max
+	,median(Multidimensional_Poverty_Index) as max
+	,nmiss(Multidimensional_Poverty_Index) as missing
+	from 
+	Statistical_2018_annex_table_6
+	;
+quit;
+title;
+
+title "Inspect Mean years of schooling female";
+proc sql;
+	select
+	 min(Mean_years_of_schooling_female) as min
+	,max(Mean_years_of_schooling_female) as max
+	,mean(Mean_years_of_schooling_female) as max
+	,median(Mean_years_of_schooling_female) as max
+	,nmiss(Mean_years_of_schooling_female) as missing
+	from 
+	Statistical_2018_annex_table_4
+	;
+quit;
+title;
+
+title "Inspect Mean years of schooling male";
+proc sql;
+	select
+	 min(Mean_years_of_schooling_male) as min
+	,max(Mean_years_of_schooling_male) as max
+	,mean(Mean_years_of_schooling_male) as max
+	,median(Mean_years_of_schooling_male) as max
+	,nmiss(Mean_years_of_schooling_male) as missing
+	from 
+	Statistical_2018_annex_table_4
+	;
+quit;
+title;
+
+title "Inspect Human Development Index female";
+proc sql;
+	select
+	 min(HDI_female) as min
+	,max(HDI_female) as max
+	,mean(HDI_female) as max
+	,median(HDI_female) as max
+	,nmiss(HDI_female) as missing
+	from 
+	Statistical_2018_annex_table_4
+	;
+quit;
+title;
+
+title "Inspect Human Development Index male";
+proc sql;
+	select
+	 min(HDI_male) as min
+	,max(HDI_male) as max
+	,mean(HDI_male) as max
+	,median(HDI_male) as max
+	,nmiss(HDI_male) as missing
+	from 
+	Statistical_2018_annex_table_4
+	;
+quit;
+title;
+
+title "Inspect Inequality in education";
+proc sql;
+	select
+	 min(Inequality_in_education) as min
+	,max(Inequality_in_education) as max
+	,mean(Inequality_in_education) as max
+	,median(Inequality_in_education) as max
+	,nmiss(Inequality_in_education) as missing
+	from 
+	Statistical_2018_annex_table_3
+	;
+quit;
+title;
+
 
 
 
