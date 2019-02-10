@@ -21,6 +21,9 @@ index and make appropriate action
 Note: This compares the column "Country" to 
 the column of "Inequality-adjusted life expectancy Index from 2018 
 Statistical_Annex_Table_3.
+
+Limitations: The value in this dataset need to be numeric to perform mean and 
+median calculation. 
 ;
 
 
@@ -36,6 +39,9 @@ in national income value.
 Note: This compares the column "Expected years of 
 schooling" to the column "Estimated gross national income per capita" from 
 2018 Statistical_Annex_Table_4
+
+Limitations: The value in this dataset need to be numeric to perform mean and 
+median calculation
 ;
 
 
@@ -51,4 +57,6 @@ resources to the needest country.
 Note: This compares the column "Country" from 
 sat15 to the column "Population in severe multidimensional poverty from 2018 
 Statistical_Annex_Table_6.
+
+Limitations: missing value may need to removed to perform general linear model
 ;
