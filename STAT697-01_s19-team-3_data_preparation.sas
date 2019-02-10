@@ -226,8 +226,6 @@ proc sql;
   	select
 	 min(Estimated_gross_national_income_) as min
 	,max(Estimated_gross_national_income_) as max
-	,mean(Estimated_gross_national_income_) as max
-	,median(Estimated_gross_national_income_) as max
 	,nmiss(Estimated_gross_national_income_) as missing
     from
 	Statistical_2018_Annex_Table_4
