@@ -121,4 +121,75 @@ https://github.com/stat697/team-3_project_repo/blob/master/data/2018_Statistical
     %end;
 %mend;
 %loadDatasets
-***
+
+
+*There is no duplicate/missing primary ID value in the table Statistical_2018_Annex_Table_3. Therefore, 
+there is no need to implement a mitigation strategy for this dataset;
+    
+proc sql;
+
+    create table Annex_Table_3_dups as
+        select
+            Country
+            ,count(*) as row_count_for_unique_id_value
+        from
+            Statistical_2018_Annex_Table_3
+        group by
+			Country            
+          
+        having
+            row_count_for_unique_id_value > 1
+    ;
+quit;
+
+*There is no duplicate/missing primary ID value in the table Statistical_2018_Annex_Table_4. Therefore, 
+there is no need to implement a mitigation strategy for this dataset;
+
+proc sql;
+
+    create table Annex_Table_4_dups as
+        select
+            Country
+            ,count(*) as row_count_for_unique_id_value
+        from
+            Statistical_2018_Annex_Table_4
+        group by
+			Country            
+          
+        having
+            row_count_for_unique_id_value > 1
+    ;
+quit;
+
+* There are 15 blank rows on the bottom of the Statistical_2018_Annex_Table_6 dataset, 
+mitigation strategy is developed and implemented per the code below;
+
+proc sql;
+
+    create table Annex_Table_6_dups as
+        select
+            Country
+            ,count(*) as row_count_for_unique_id_value
+        from
+            Statistical_2018_Annex_Table_6
+        group by
+			Country            
+          
+        having
+            row_count_for_unique_id_value > 1
+    ;
+
+
+create table Annex_Table_6_dups_fix as
+        select
+            *
+        from
+            Statistical_2018_Annex_Table_6
+        where
+            /* remove rows with missing unique id value components */
+            not(missing(Country))
+           
+    ;
+quit;
+
+
