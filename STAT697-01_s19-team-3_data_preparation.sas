@@ -193,8 +193,58 @@ quit;
 
 
 
-*Ming's Reseach Question Column
+title "Inspect the adjusted life expentacy index from Statistical_2018_Annex_Table_3 dataset";
+proc sql;
+    select
+	 min(adjusted_life_index) as min
+	,max(adjusted_life_index) as max
+	,nmiss(adjusted_life_index) as missing
+    from
+	Statistical_2018_Annex_Table_3
+    ;
+quit;
+title;
 
+
+
+title "year of school for female from Statistical_2018_Annex_Table_4 dataset";
+proc sql;
+  	select
+	 min(Year_School_Female) as min
+	,max(Year_School_Female) as max
+	,nmiss(Year_School_Female) as missing
+    from
+	Statistical_2018_Annex_Table_4
+    ;
+quit;
+title;
+
+title "Inspect edtimated gross national income on Statistical_2018_national_income";
+proc sql;
+  	select
+	 min(Estimated_gross_national_income_) as min
+	,max(Estimated_gross_national_income_) as max
+	,nmiss(Estimated_gross_national_income_) as missing
+    from
+	Statistical_2018_Annex_Table_4
+    ;
+quit;
+title;
+
+
+title "Population_in_severe_multidimens from Annex_Table_6_dups_fix dataset";
+proc sql;
+  	select
+	 min(Population_in_severe_multidimens) as min
+	,max(Population_in_severe_multidimens) as max
+	,mean(Population_in_severe_multidimens) as max
+	,median(Population_in_severe_multidimens) as max
+	,nmiss(Population_in_severe_multidimens) as missing
+    from
+	Annex_Table_6_dups_fix
+    ;
+quit;
+title;
 
 *Mariano's Research Question Column
 
