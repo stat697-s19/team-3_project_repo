@@ -23,6 +23,8 @@ determine if education really is a significant agent to combat poverty.
 Note: This compares the column "Contribution of deprivation in dimention to 
 overall poverty" from 2018 Statistical Annex Table 6 to the column 
 "Multidimensional Poverty Index" from 2018 Statistical Annex Table 6.
+
+Limitations: missing values need to be addressed for glm and general data analysis
 ;
 
 
@@ -40,6 +42,8 @@ expectancy and vice versa.
 Note: This compares the column "Mean years of schooling" from 2018 Statistical 
 Annex Table 4 to the column "Human Development Index" from 2018 Statistical 
 Annex Table 4.
+
+Limitations: missing values need to be addressed for glm and general data analysis
 ;
 
 
@@ -58,4 +62,6 @@ Rationale: This would help to show whether life expectancy can forecast
 Note: This compares the column "Inequality of Education" from 2018 Statistical 
 Annex Table 3 to the column "Human Development Index" from 2018 Statistical 
 Annex Table 3.
+
+Limitations: missing values need to be addressed for glm and general data analysis
 ;
