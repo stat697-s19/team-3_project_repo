@@ -25,6 +25,9 @@ country.
 Note: This compares the column "Inequality of Education" from 2018 Statistical 
 Annex Table 3 to the column "Multidimensional Poverty Index" from 2018 
 Statistical Annex Table 6.
+
+Limitations: Values denoted as ".." for the column "Inequality of Education" 
+should be excluded from analysis since they represent missing values.
 ;
 
 
@@ -42,6 +45,10 @@ significant difference in the strength of assocation by gender.
 Note: This compares the columns "Female" and "Male" under "Mean years of schooling" 
 from 2018 Statistical Annex Table 4 each to the column "Multudimensional Poverty 
 Index" from 2018 Statistical Annex Table 6.
+
+Limitations: Values denoted as ".." for the columns "Mean years of schooling" 
+for both "Female" and "Male" should be excluded from analysis since they represent
+missing values.
 ;
 
 
@@ -49,15 +56,18 @@ Index" from 2018 Statistical Annex Table 6.
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 *
-Question: Can % of "Population living below the income poverty line", specifically, 
-the "national poverty line" for 2006-2017 be used to predict the country's "Human
-Development Index (HDI)"?
+Question: Can % of "Population living below the income poverty line" for 2006-2017 
+be used to predict the country's "HDI"?
 
 Rationale: This can help to see how poverty levels are associated with a country's 
 Human Development Index value, which assesses a country's development.
 
-Note: This compares the column "National poverty line" from 2018 Statistical 
-Annex Table 6 to the column "Human Devlopment Index (HDI)" from 2018 Statistical
+Note: This compares the column "Population_living_below_national_poverty_line" 
+from 2018 Statistical Annex Table 6 to the column "HDI" from 2018 Statistical 
 Annex Table 3.
+
+Limitations: Missing values for the column "Population living below 
+national poverty line" should be excluded from analysis as there are 10 missing
+values indicated.
 ;
 
