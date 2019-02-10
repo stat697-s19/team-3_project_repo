@@ -5,19 +5,12 @@
 
 *
 [Dataset 1 Name] 2018 Statistical Annex Table 6
-
 [Dataset Description] Multidimensional Poverty Index: developing countries
-
 [Experimental Unit Description] Countries from around the world
-
 [Number of Observations] 1,365                    
-
 [Number of Features] 13
-
 [Data Source] http://hdr.undp.org/sites/default/files/composite_tables/2018_Statistical_Annex_Table_6.xlsx
-
 [Data Dictionary] http://hdr.undp.org/en//2018-MPI
-
 [Unique ID Schema] The column "Country" is the unique primary key.
 ;
 %let inputDataset3DSN = Statistical_2018_Annex_Table_6;
@@ -29,19 +22,12 @@ https://github.com/stat697/team-3_project_repo/blob/master/data/2018_Statistical
 
 *
 [Dataset 2 Name] 2018 Statistical Annex Table 4
-
 [Dataset Description] Gender Development Index
-
 [Experimental Unit Description] Countries from around the world
-
 [Number of Observations] 2,268                    
-
 [Number of Features] 12
-
 [Data Source] http://hdr.undp.org/sites/default/files/composite_tables/2018_Statistical_Annex_Table_4.xlsx
-
 [Data Dictionary] http://hdr.undp.org/en/content/gender-development-index-gdi
-
 [Unique ID Schema] The columns "HDI rank" and "Country" form a composite key, 
 which together are equivalent to the composite key in dataset 2018 Statistical 
 Annex Table 3.
@@ -55,19 +41,12 @@ https://github.com/stat697/team-3_project_repo/blob/master/data/2018_Statistical
 
 *
 [Dataset 3 Name] 2018 Statistical Annex Table 3
-
 [Dataset Description] Inequality-adjusted Human Development Index
-
 [Experimental Unit Description] Countries from around the world
-
 [Number of Observations] 2,646                    
-
 [Number of Features] 14
-
 [Data Source] http://hdr.undp.org/sites/default/files/composite_tables/2018_Statistical_Annex_Table_3.xlsx
-
 [Data Dictionary] http://hdr.undp.org/content/inequality-adjusted-human-development-index-ihdi
-
 [Unique ID Schema] The columns "HDI rank" and "Country" form a composite key, 
 which together are equivalent to the composite key in dataset 2018 Statistical 
 Annex Table 4.
@@ -123,8 +102,8 @@ https://github.com/stat697/team-3_project_repo/blob/master/data/2018_Statistical
 %loadDatasets
 
 
-*There is no duplicate/missing primary ID value in the table Statistical_2018_Annex_Table_3. Therefore, 
-there is no need to implement a mitigation strategy for this dataset;
+/*There is no duplicate/missing primary ID value in the table Statistical_2018_Annex_Table_3. Therefore, 
+there is no need to implement a mitigation strategy for this dataset; */
     
 proc sql;
 
@@ -142,8 +121,8 @@ proc sql;
     ;
 quit;
 
-*There is no duplicate/missing primary ID value in the table Statistical_2018_Annex_Table_4. Therefore, 
-there is no need to implement a mitigation strategy for this dataset;
+/*There is no duplicate/missing primary ID value in the table Statistical_2018_Annex_Table_4. Therefore, 
+there is no need to implement a mitigation strategy for this dataset; */
 
 proc sql;
 
@@ -161,8 +140,8 @@ proc sql;
     ;
 quit;
 
-* There are 15 blank rows on the bottom of the Statistical_2018_Annex_Table_6 dataset, 
-mitigation strategy is developed and implemented per the code below;
+/* There are 15 blank rows on the bottom of the Statistical_2018_Annex_Table_6 dataset, 
+mitigation strategy is developed and implemented per the code below; */
 
 proc sql;
 
@@ -192,63 +171,100 @@ create table Annex_Table_6_dups_fix as
     ;
 quit;
 
-
-*Ming's Reseach Question Column;
-
-title "Inspect the adjusted life expentacy index from Statistical_2018_Annex_Table_3 dataset";
+title "Inspect Percent education contribution of deprivation";
 proc sql;
-    select
-	 min(adjusted_life_index) as min
-	,max(adjusted_life_index) as max
-	,nmiss(adjusted_life_index) as missing
-    from
-	Statistical_2018_Annex_Table_3
-    ;
+	select
+	 min(Percent_education_contribution_o) as min
+	,max(Percent_education_contribution_o) as max
+	,mean(Percent_education_contribution_o) as max
+	,median(Percent_education_contribution_o) as max
+	,nmiss(Percent_education_contribution_o) as missing
+	from 
+	Statistical_2018_annex_table_6
+	;
 quit;
 title;
 
-
-
-title "year of school for female from Statistical_2018_Annex_Table_4 dataset";
+title "Inspect Multidimensional Poverty Index";
 proc sql;
-  	select
-	 min(Year_School_Female) as min
-	,max(Year_School_Female) as max
-	,nmiss(Year_School_Female) as missing
-    from
-	Statistical_2018_Annex_Table_4
-    ;
+	select
+	 min(Multidimensional_Poverty_Index) as min
+	,max(Multidimensional_Poverty_Index) as max
+	,mean(Multidimensional_Poverty_Index) as max
+	,median(Multidimensional_Poverty_Index) as max
+	,nmiss(Multidimensional_Poverty_Index) as missing
+	from 
+	Statistical_2018_annex_table_6
+	;
 quit;
 title;
 
-title "Inspect edtimated gross national income on Statistical_2018_national_income";
+title "Inspect Mean years of schooling female";
 proc sql;
-  	select
-	 min(Estimated_gross_national_income_) as min
-	,max(Estimated_gross_national_income_) as max
-	,nmiss(Estimated_gross_national_income_) as missing
-    from
-	Statistical_2018_Annex_Table_4
-    ;
+	select
+	 min(Mean_years_of_schooling_female) as min
+	,max(Mean_years_of_schooling_female) as max
+	,mean(Mean_years_of_schooling_female) as max
+	,median(Mean_years_of_schooling_female) as max
+	,nmiss(Mean_years_of_schooling_female) as missing
+	from 
+	Statistical_2018_annex_table_4
+	;
 quit;
 title;
 
-
-title "Population_in_severe_multidimens from Annex_Table_6_dups_fix dataset";
+title "Inspect Mean years of schooling male";
 proc sql;
-  	select
-	 min(Population_in_severe_multidimens) as min
-	,max(Population_in_severe_multidimens) as max
-	,mean(Population_in_severe_multidimens) as max
-	,median(Population_in_severe_multidimens) as max
-	,nmiss(Population_in_severe_multidimens) as missing
-    from
-	Annex_Table_6_dups_fix
-    ;
+	select
+	 min(Mean_years_of_schooling_male) as min
+	,max(Mean_years_of_schooling_male) as max
+	,mean(Mean_years_of_schooling_male) as max
+	,median(Mean_years_of_schooling_male) as max
+	,nmiss(Mean_years_of_schooling_male) as missing
+	from 
+	Statistical_2018_annex_table_4
+	;
 quit;
 title;
 
-*Mariano's Research Question Column
+title "Inspect Human Development Index female";
+proc sql;
+	select
+	 min(HDI_female) as min
+	,max(HDI_female) as max
+	,mean(HDI_female) as max
+	,median(HDI_female) as max
+	,nmiss(HDI_female) as missing
+	from 
+	Statistical_2018_annex_table_4
+	;
+quit;
+title;
 
+title "Inspect Human Development Index male";
+proc sql;
+	select
+	 min(HDI_male) as min
+	,max(HDI_male) as max
+	,mean(HDI_male) as max
+	,median(HDI_male) as max
+	,nmiss(HDI_male) as missing
+	from 
+	Statistical_2018_annex_table_4
+	;
+quit;
+title;
 
-*Mariela's Research Question Column
+title "Inspect Inequality in education";
+proc sql;
+	select
+	 min(Inequality_in_education) as min
+	,max(Inequality_in_education) as max
+	,mean(Inequality_in_education) as max
+	,median(Inequality_in_education) as max
+	,nmiss(Inequality_in_education) as missing
+	from 
+	Statistical_2018_annex_table_3
+	;
+quit;
+title;
