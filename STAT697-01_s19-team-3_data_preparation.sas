@@ -212,7 +212,7 @@ title;
 
 
 
-title "year of school for female from Statistical_2018_Annex_Table_4 dataset";
+title "Year of school for female from Statistical_2018_Annex_Table_4 dataset";
 proc sql;
   	select
 	 min(Year_School_Female) as min
