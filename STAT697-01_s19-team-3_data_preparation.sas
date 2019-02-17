@@ -195,161 +195,161 @@ quit;
 *Ming's Research Question Column
 
 *inspect columns of interest in cleaned versions of datasets;
-
-title "Inspect the adjusted life expentacy index from Statistical_2018_Annex_Table_3 dataset";
-proc sql;
-    select
-	 min(adjusted_life_index) as min
-	,max(adjusted_life_index) as max
-	,nmiss(adjusted_life_index) as missing
-    from
-	Statistical_2018_Annex_Table_3
-    ;
-quit;
-title;
-
-
-
-title "year of school for female from Statistical_2018_Annex_Table_4 dataset";
-proc sql;
-  	select
-	 min(Year_School_Female) as min
-	,max(Year_School_Female) as max
-	,nmiss(Year_School_Female) as missing
-    from
-	Statistical_2018_Annex_Table_4
-    ;
-quit;
-title;
-
-title "Inspect edtimated gross national income on Statistical_2018_national_income";
-proc sql;
-  	select
-	 min(Estimated_gross_national_income_) as min
-	,max(Estimated_gross_national_income_) as max
-	,nmiss(Estimated_gross_national_income_) as missing
-    from
-	Statistical_2018_Annex_Table_4
-    ;
-quit;
-title;
+	/*
+	title "Inspect the adjusted life expentacy index from Statistical_2018_Annex_Table_3 dataset";
+	proc sql;
+ 	  	select
+	    	min(adjusted_life_index) as min
+		,max(adjusted_life_index) as max
+		,nmiss(adjusted_life_index) as missing
+  		from
+		Statistical_2018_Annex_Table_3
+  		;
+	quit;
+	title;
 
 
-title "Population_in_severe_multidimens from Annex_Table_6_dups_fix dataset";
-proc sql;
-  	select
-	 min(Population_in_severe_multidimens) as min
-	,max(Population_in_severe_multidimens) as max
-	,mean(Population_in_severe_multidimens) as max
-	,median(Population_in_severe_multidimens) as max
-	,nmiss(Population_in_severe_multidimens) as missing
-    from
-	Annex_Table_6_dups_fix
-    ;
-quit;
-title;
+
+	title "year of school for female from Statistical_2018_Annex_Table_4 dataset";
+	proc sql;
+  		select
+		 min(Year_School_Female) as min
+		,max(Year_School_Female) as max
+		,nmiss(Year_School_Female) as missing
+  		from
+		Statistical_2018_Annex_Table_4
+  		;
+	quit;
+	title;
+
+	title "Inspect edtimated gross national income on Statistical_2018_national_income";
+	proc sql;
+  		select
+		 min(Estimated_gross_national_income_) as min
+		,max(Estimated_gross_national_income_) as max
+		,nmiss(Estimated_gross_national_income_) as missing
+    		from
+		Statistical_2018_Annex_Table_4
+   		;
+	quit;
+	title;
+
+
+	title "Population_in_severe_multidimens from Annex_Table_6_dups_fix dataset";
+	proc sql;
+  		select
+		 min(Population_in_severe_multidimens) as min
+		,max(Population_in_severe_multidimens) as max
+		,mean(Population_in_severe_multidimens) as max
+		,median(Population_in_severe_multidimens) as max
+		,nmiss(Population_in_severe_multidimens) as missing
+  		from
+		Annex_Table_6_dups_fix
+  		;
+	quit;
+	title;
+	*/
 
 *Mariano's Research Question Column;
+	/*
+	title "Inspect Percent education contribution of deprivation";
+	proc sql;
+		select
+		 min(Percent_education_contribution_o) as min
+		,max(Percent_education_contribution_o) as max
+		,mean(Percent_education_contribution_o) as max
+		,median(Percent_education_contribution_o) as max
+		,nmiss(Percent_education_contribution_o) as missing
+		from 
+		Statistical_2018_annex_table_6
+		;
+	quit;
+	title;
 
+	title "Inspect Multidimensional Poverty Index";
+	proc sql;
+		select
+		 min(Multidimensional_Poverty_Index) as min
+		,max(Multidimensional_Poverty_Index) as max
+		,mean(Multidimensional_Poverty_Index) as max
+		,median(Multidimensional_Poverty_Index) as max
+		,nmiss(Multidimensional_Poverty_Index) as missing
+		from 
+		Statistical_2018_annex_table_6
+		;
+	quit;
+	title;
 
-title "Inspect Percent education contribution of deprivation";
-proc sql;
-	select
-	 min(Percent_education_contribution_o) as min
-	,max(Percent_education_contribution_o) as max
-	,mean(Percent_education_contribution_o) as max
-	,median(Percent_education_contribution_o) as max
-	,nmiss(Percent_education_contribution_o) as missing
-	from 
-	Statistical_2018_annex_table_6
-	;
-quit;
-title;
+	title "Inspect Mean years of schooling female";
+	proc sql;
+		select
+		 min(Mean_years_of_schooling_female) as min
+		,max(Mean_years_of_schooling_female) as max
+		,mean(Mean_years_of_schooling_female) as max
+		,median(Mean_years_of_schooling_female) as max
+		,nmiss(Mean_years_of_schooling_female) as missing
+		from 
+		Statistical_2018_annex_table_4
+		;
+	quit;
+	title;
 
-title "Inspect Multidimensional Poverty Index";
-proc sql;
-	select
-	 min(Multidimensional_Poverty_Index) as min
-	,max(Multidimensional_Poverty_Index) as max
-	,mean(Multidimensional_Poverty_Index) as max
-	,median(Multidimensional_Poverty_Index) as max
-	,nmiss(Multidimensional_Poverty_Index) as missing
-	from 
-	Statistical_2018_annex_table_6
-	;
-quit;
-title;
+	title "Inspect Mean years of schooling male";
+	proc sql;
+		select
+		 min(Mean_years_of_schooling_male) as min
+		,max(Mean_years_of_schooling_male) as max
+		,mean(Mean_years_of_schooling_male) as max
+		,median(Mean_years_of_schooling_male) as max
+		,nmiss(Mean_years_of_schooling_male) as missing
+		from 
+		Statistical_2018_annex_table_4
+		;
+	quit;
+	title;
 
-title "Inspect Mean years of schooling female";
-proc sql;
-	select
-	 min(Mean_years_of_schooling_female) as min
-	,max(Mean_years_of_schooling_female) as max
-	,mean(Mean_years_of_schooling_female) as max
-	,median(Mean_years_of_schooling_female) as max
-	,nmiss(Mean_years_of_schooling_female) as missing
-	from 
-	Statistical_2018_annex_table_4
-	;
-quit;
-title;
+	title "Inspect Human Development Index female";
+	proc sql;
+		select
+		 min(HDI_female) as min
+		,max(HDI_female) as max
+		,mean(HDI_female) as max
+		,median(HDI_female) as max
+		,nmiss(HDI_female) as missing
+		from 
+		Statistical_2018_annex_table_4
+		;
+	quit;
+	title;
 
-title "Inspect Mean years of schooling male";
-proc sql;
-	select
-	 min(Mean_years_of_schooling_male) as min
-	,max(Mean_years_of_schooling_male) as max
-	,mean(Mean_years_of_schooling_male) as max
-	,median(Mean_years_of_schooling_male) as max
-	,nmiss(Mean_years_of_schooling_male) as missing
-	from 
-	Statistical_2018_annex_table_4
-	;
-quit;
-title;
+	title "Inspect Human Development Index male";
+	proc sql;
+		select
+		 min(HDI_male) as min
+		,max(HDI_male) as max
+		,mean(HDI_male) as max
+		,median(HDI_male) as max
+		,nmiss(HDI_male) as missing
+		from 
+		Statistical_2018_annex_table_4
+		;
+	quit;
+	title;
 
-title "Inspect Human Development Index female";
-proc sql;
-	select
-	 min(HDI_female) as min
-	,max(HDI_female) as max
-	,mean(HDI_female) as max
-	,median(HDI_female) as max
-	,nmiss(HDI_female) as missing
-	from 
-	Statistical_2018_annex_table_4
-	;
-quit;
-title;
-
-title "Inspect Human Development Index male";
-proc sql;
-	select
-	 min(HDI_male) as min
-	,max(HDI_male) as max
-	,mean(HDI_male) as max
-	,median(HDI_male) as max
-	,nmiss(HDI_male) as missing
-	from 
-	Statistical_2018_annex_table_4
-	;
-quit;
-title;
-
-title "Inspect Inequality in education";
-proc sql;
-	select
-	 min(Inequality_in_education) as min
-	,max(Inequality_in_education) as max
-	,mean(Inequality_in_education) as max
-	,median(Inequality_in_education) as max
-	,nmiss(Inequality_in_education) as missing
-	from 
-	Statistical_2018_annex_table_3
-	;
-quit;
-title;
-
+	title "Inspect Inequality in education";
+	proc sql;
+		select
+		 min(Inequality_in_education) as min
+		,max(Inequality_in_education) as max
+		,mean(Inequality_in_education) as max
+		,median(Inequality_in_education) as max
+		,nmiss(Inequality_in_education) as missing
+		from 
+		Statistical_2018_annex_table_3
+		;
+	quit;
+	title;
+	*/
 
 
 
@@ -357,7 +357,7 @@ title;
 	/*
 	title "Inspect Multidimensional Poverty Index in Statistical_2018_Annex_Table_6";
 	proc sql;
-	    select
+	    	select
 		 min(Multidimensional_Poverty_Index) as min
 		,max(Multidimensional_Poverty_Index) as max
 		,mean(Multidimensional_Poverty_Index) as max
@@ -372,7 +372,7 @@ title;
 	title "Inspect Population_living_below_national_poverty_line in Annex_Table_6_
 	dups_fix";
 	proc sql;
-  	  select
+  	  	select
 		 min(Population_living_below_national) as min
 		,max(Population_living_below_national) as max
 		,mean(Population_living_below_national) as max
