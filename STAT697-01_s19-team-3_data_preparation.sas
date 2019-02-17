@@ -196,6 +196,8 @@ quit;
 
 *inspect columns of interest in cleaned versions of datasets;
 
+/*
+
 title "Inspect the adjusted life expentacy index from Statistical_2018_Annex_Table_3 dataset";
 proc sql;
     select
@@ -248,6 +250,8 @@ proc sql;
     ;
 quit;
 title;
+
+*/
 
 *Mariano's Research Question Column
 
