@@ -434,3 +434,72 @@ quit;
 	quit;
 	title;
 	*/
+
+
+* combine Statistical_2018_Annex_Table_3 and Statistical_2018_Annex_Table_4 
+horizontally using a data-step match-merge;
+data Annex_Table_3_and_4_v1;
+    retain
+        Country
+        adjusted_life_index
+        Inequality_in_education
+        HDI
+        Mean_years_of_schooling_female
+		Mean_years_of_schooling_male
+		Year_School_Female
+		HDI_female
+		HDI_male
+		Estimated_gross_national_income
+    ;
+    keep
+        Country
+        adjusted_life_index
+        Inequality_in_education
+        HDI
+        Mean_years_of_schooling_female
+		Mean_years_of_schooling_male
+		Year_School_Female
+		HDI_female
+		HDI_male
+		Estimated_gross_national_income
+    ;
+    merge
+        Statistical_2018_Annex_Table_3
+        Statistical_2018_Annex_Table_4
+    ;
+    by Country;
+run;
+proc sort data=Annex_Table_3_and_4_v1;
+    by Country;
+run;
+
+
+proc sql;
+    create table Annex_Table_3_and_4_v2 as
+        select
+             coalesce(A.Country,B.Country) as Country
+        	 ,adjusted_life_index
+       		 ,Inequality_in_education
+       		 ,HDI
+       		 ,Mean_years_of_schooling_female
+			 ,Mean_years_of_schooling_male
+			 ,Year_School_Female
+			 ,HDI_female
+			 ,HDI_male
+			 ,Estimated_gross_national_income
+        from
+            Statistical_2018_Annex_Table_3 as A
+            full join
+            Statistical_2018_Annex_Table_4 as B
+            on A.Country=B.Country
+        order by
+            Country
+    ;
+quit;
+
+proc compare
+        base=Annex_Table_3_and_4_v1
+        compare=Annex_Table_3_and_4_v2
+        novalues
+    ;
+run;
