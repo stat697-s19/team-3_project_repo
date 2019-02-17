@@ -449,7 +449,7 @@ data Annex_Table_3_and_4_v1;
 		Year_School_Female
 		HDI_female
 		HDI_male
-		Estimated_gross_national_income
+    Estimated_gross_national_income_
     ;
     keep
         Country
@@ -461,7 +461,7 @@ data Annex_Table_3_and_4_v1;
 		Year_School_Female
 		HDI_female
 		HDI_male
-		Estimated_gross_national_income
+    Estimated_gross_national_income_
     ;
     merge
         Statistical_2018_Annex_Table_3
@@ -486,7 +486,7 @@ proc sql;
 			 ,Year_School_Female
 			 ,HDI_female
 			 ,HDI_male
-			 ,Estimated_gross_national_income
+       ,Estimated_gross_national_income_
         from
             Statistical_2018_Annex_Table_3 as A
             full join
