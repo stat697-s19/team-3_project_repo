@@ -26,6 +26,37 @@ overall poverty" from 2018 Statistical Annex Table 6 to the column
 ;
 
 
+proc sql;
+    create table Annex_Table_6_and_4_ as
+        select
+             coalesce(A.Country,B.Country) as Country
+        	 ,adjusted_life_index
+       		 ,Inequality_in_education
+       		 ,HDI
+       		 ,Mean_years_of_schooling_female
+			 ,Mean_years_of_schooling_male
+			 ,Year_School_Female
+			 ,HDI_female
+			 ,HDI_male
+			 ,Estimated_gross_national_income
+        from
+            Statistical_2018_Annex_Table_6 as A
+            full join
+            Statistical_2018_Annex_Table_4 as B
+            on A.Country=B.Country
+        order by
+            Country
+    ;
+quit;
+
+proc compare
+        base=Annex_Table_6_and_4_v1
+        compare=Annex_Table_6_and_4_v2
+        novalues
+    ;
+run;
+
+
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
@@ -43,6 +74,36 @@ Annex Table 4.
 ;
 
 
+
+proc sql;
+    create table Annex_Table_3_and_4_v2 as
+        select
+             coalesce(A.Country,B.Country) as Country
+        	 ,adjusted_life_index
+       		 ,Inequality_in_education
+       		 ,HDI
+       		 ,Mean_years_of_schooling_female
+			 ,Mean_years_of_schooling_male
+			 ,Year_School_Female
+			 ,HDI_female
+			 ,HDI_male
+			 ,Estimated_gross_national_income
+        from
+            Statistical_2018_Annex_Table_3 as A
+            full join
+            Statistical_2018_Annex_Table_4 as B
+            on A.Country=B.Country
+        order by
+            Country
+    ;
+quit;
+
+proc compare
+        base=Annex_Table_3_and_4_v1
+        compare=Annex_Table_3_and_4_v2
+        novalues
+    ;
+run;
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
@@ -59,3 +120,35 @@ Note: This compares the column "Inequality of Education" from 2018 Statistical
 Annex Table 3 to the column "Human Development Index" from 2018 Statistical 
 Annex Table 3.
 ;
+
+
+
+proc sql;
+    create table Annex_Table_3_and_6_v2 as
+        select
+             coalesce(A.Country,B.Country) as Country
+        	 ,adjusted_life_index
+       		 ,Inequality_in_education
+       		 ,HDI
+       		 ,Mean_years_of_schooling_female
+			 ,Mean_years_of_schooling_male
+			 ,Year_School_Female
+			 ,HDI_female
+			 ,HDI_male
+			 ,Estimated_gross_national_income
+        from
+            Statistical_2018_Annex_Table_3 as A
+            full join
+            Statistical_2018_Annex_Table_6 as B
+            on A.Country=B.Country
+        order by
+            Country
+    ;
+quit;
+
+proc compare
+        base=Annex_Table_3_and_6_v1
+        compare=Annex_Table_3_and_6_v2
+        novalues
+    ;
+run;
