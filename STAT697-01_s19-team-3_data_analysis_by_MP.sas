@@ -30,6 +30,27 @@ Limitations: Values denoted as ".." for the column "Inequality of Education"
 should be excluded from analysis since they represent missing values.
 ;
 
+proc sql;
+	create table Education_Inequality_and_Poverty as
+		select
+			coalesce(A.Country,B.Country) as Country
+			,Multidimensional_Poverty_Index
+			,Inequality_in_education
+		from
+			Annex_Table_3_and_4_v2 as A
+			full join
+			Statistical_2018_Annex_Table_6 as B
+			on A.Country=B.Country
+		order by
+			Country
+	;
+quit;
+
+proc corr 
+	data=Education_Inequality_and_Poverty;
+	var Multidimensional_Poverty_Index Inequality_in_education;
+run;
+
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
@@ -52,6 +73,32 @@ missing values.
 ;
 
 
+proc sql;
+   	select
+	 min(Mean_years_of_schooling_female) as min
+	,max(Mean_years_of_schooling_female) as max
+	,mean(Mean_years_of_schooling_female) as mean
+	,median(Mean_years_of_schooling_female) as median
+    from
+	Annex_Table_3_and_4_v2
+   	;
+quit;
+
+proc sql;
+   	select
+	 min(Mean_years_of_schooling_male) as min
+	,max(Mean_years_of_schooling_male) as max
+	,mean(Mean_years_of_schooling_male) as mean
+	,median(Mean_years_of_schooling_male) as median
+    from
+	Annex_Table_3_and_4_v2
+   	;
+quit;
+
+
+
+
+
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
@@ -71,3 +118,23 @@ national poverty line" should be excluded from analysis as there are 10 missing
 values indicated.
 ;
 
+proc sql;
+	create table Poverty_and_HDI as
+		select
+			coalesce(A.Country,B.Country) as Country
+			,HDI
+			,Population_living_below_national
+		from
+			Annex_Table_3_and_4_v2 as A
+			full join
+			Statistical_2018_Annex_Table_6 as B
+			on A.Country=B.Country
+		order by
+			Country
+	;
+quit;
+
+proc corr 
+	data=Poverty_and_HDI;
+	var HDI Population_living_below_national;
+run;
