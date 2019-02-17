@@ -354,83 +354,83 @@ title;
 
 
 *inspect columns of interest in cleaned versions of datasets;
+	/*
+	title "Inspect Multidimensional Poverty Index in Statistical_2018_Annex_Table_6";
+	proc sql;
+	    select
+		 min(Multidimensional_Poverty_Index) as min
+		,max(Multidimensional_Poverty_Index) as max
+		,mean(Multidimensional_Poverty_Index) as max
+		,median(Multidimensional_Poverty_Index) as max
+		,nmiss(Multidimensional_Poverty_Index) as missing
+		from
+		Annex_Table_6_dups_fix
+		;
+	quit;
+	title;
 
-title "Inspect Multidimensional Poverty Index in Statistical_2018_Annex_Table_6";
-proc sql;
-    select
-	 min(Multidimensional_Poverty_Index) as min
-	,max(Multidimensional_Poverty_Index) as max
-	,mean(Multidimensional_Poverty_Index) as max
-	,median(Multidimensional_Poverty_Index) as max
-	,nmiss(Multidimensional_Poverty_Index) as missing
-    from
-	Annex_Table_6_dups_fix
-    ;
-quit;
-title;
+	title "Inspect Population_living_below_national_poverty_line in Annex_Table_6_
+	dups_fix";
+	proc sql;
+  	  select
+		 min(Population_living_below_national) as min
+		,max(Population_living_below_national) as max
+		,mean(Population_living_below_national) as max
+		,median(Population_living_below_national) as max
+		,nmiss(Population_living_below_national) as missing
+   		from
+		Annex_Table_6_dups_fix
+  		;
+	quit;
+	title;
 
-title "Inspect Population_living_below_national_poverty_line in Annex_Table_6_
-dups_fix";
-proc sql;
-    select
-	 min(Population_living_below_national) as min
-	,max(Population_living_below_national) as max
-	,mean(Population_living_below_national) as max
-	,median(Population_living_below_national) as max
-	,nmiss(Population_living_below_national) as missing
-    from
-	Annex_Table_6_dups_fix
-    ;
-quit;
-title;
+	title "Inspect Inequality_in_education in Statistical_2018_annex_table_3";
+	proc sql;
+   		select
+		 min(Inequality_in_education) as min
+		,max(Inequality_in_education) as max
+		,nmiss(Inequality_in_education) as missing
+   		from
+		Statistical_2018_annex_table_3
+   		;
+	quit;
+	title;
 
-title "Inspect Inequality_in_education in Statistical_2018_annex_table_3";
-proc sql;
-    select
-	 min(Inequality_in_education) as min
-	,max(Inequality_in_education) as max
-	,nmiss(Inequality_in_education) as missing
-    from
-	Statistical_2018_annex_table_3
-    ;
-quit;
-title;
+	title "Inspect Mean_years_of_schooling_female in Statistical_2018_annex_table_4";
+	proc sql;
+   		select
+		 min(Mean_years_of_schooling_female) as min
+		,max(Mean_years_of_schooling_female) as max
+		,nmiss(Mean_years_of_schooling_female) as missing
+    		from
+		Statistical_2018_annex_table_4
+   		;
+	quit;
+	title;
 
-title "Inspect Mean_years_of_schooling_female in Statistical_2018_annex_table_4";
-proc sql;
-    select
-	 min(Mean_years_of_schooling_female) as min
-	,max(Mean_years_of_schooling_female) as max
-	,nmiss(Mean_years_of_schooling_female) as missing
-    from
-	Statistical_2018_annex_table_4
-    ;
-quit;
-title;
+	title "Inspect Mean_years_of_schooling_male in Statistical_2018_Annex_Table_4";
+	proc sql;
+  	  	select
+		 min(Mean_years_of_schooling_male) as min
+		,max(Mean_years_of_schooling_male) as max
+		,nmiss(Mean_years_of_schooling_male) as missing
+   		from
+		Statistical_2018_Annex_Table_4
+   		;
+	quit;
+	title;
 
-title "Inspect Mean_years_of_schooling_male in Statistical_2018_Annex_Table_4";
-proc sql;
-    select
-	 min(Mean_years_of_schooling_male) as min
-	,max(Mean_years_of_schooling_male) as max
-	,nmiss(Mean_years_of_schooling_male) as missing
-    from
-	Statistical_2018_Annex_Table_4
-    ;
-quit;
-title;
-
-title "Inspect HDI in Statistical_2018_Annex_Table_3";
-proc sql;
-    select
-	 min(HDI) as min
-	,max(HDI) as max
-	,mean(HDI) as max
-	,median(HDI) as max
-	,nmiss(HDI) as missing
-    from
-	Statistical_2018_Annex_Table_3
-    ;
-quit;
-title;
-
+	title "Inspect HDI in Statistical_2018_Annex_Table_3";
+	proc sql;
+  		select
+		 min(HDI) as min
+		,max(HDI) as max
+		,mean(HDI) as max
+		,median(HDI) as max
+		,nmiss(HDI) as missing
+    		from
+		Statistical_2018_Annex_Table_3
+   		;
+	quit;
+	title;
+	*/
