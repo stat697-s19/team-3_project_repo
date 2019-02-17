@@ -26,6 +26,10 @@ Limitations: The value in this dataset need to be numeric to perform mean and
 median calculation. 
 ;
 
+Proc sort data=Annex_Table_3_and_4_v2;
+By Country;
+proc print;
+Run;
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
@@ -44,6 +48,9 @@ Limitations: The value in this dataset need to be numeric to perform mean and
 median calculation
 ;
 
+proc sgplot data=Annex_Table_3_and_4_v2;
+  scatter x=Year_School_Female y=Estimated_gross_national_income_;
+run;
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
@@ -60,3 +67,8 @@ Statistical_Annex_Table_6.
 
 Limitations: missing value may need to removed to perform general linear model
 ;
+
+Proc sort data=Annex_Table_3_and_4_v2;
+By Country;
+proc print;
+Run;
