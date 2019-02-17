@@ -449,7 +449,7 @@ data Annex_Table_3_and_4_v1;
 		Year_School_Female
 		HDI_female
 		HDI_male
-		Estimated_gross_national_income_female
+		Estimated_gross_national_income_
     ;
     keep
         Country
