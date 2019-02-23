@@ -192,10 +192,9 @@ create table Annex_Table_6_dups_fix as
 quit;
 
 
-*Ming's Research Question Column
-
 *inspect columns of interest in cleaned versions of datasets;
 	/*
+    *Ming's Research Question Column
 	title "Inspect the adjusted life expentacy index from Statistical_2018_Annex_Table_3 dataset";
 	proc sql;
  	  	select
@@ -248,9 +247,10 @@ quit;
   		;
 	quit;
 	title;
-	*/
+	 
 
-*Mariano's Research Question Column;
+
+    *Mariano's Research Question Column;
 	/*
 	title "Inspect Percent education contribution of deprivation";
 	proc sql;
@@ -349,12 +349,10 @@ quit;
 		;
 	quit;
 	title;
-	*/
 
 
 
-*inspect columns of interest in cleaned versions of datasets;
-	/*
+    *Mariela's Research Question Column;
 	title "Inspect Multidimensional Poverty Index in Statistical_2018_Annex_Table_6";
 	proc sql;
 	    	select
@@ -405,7 +403,7 @@ quit;
     		from
 		Statistical_2018_annex_table_4
    		;
-	quit;
+    quit;
 	title;
 
 	title "Inspect Mean_years_of_schooling_male in Statistical_2018_Annex_Table_4";
@@ -433,83 +431,87 @@ quit;
    		;
 	quit;
 	title;
-	*/
+	
 
 
-* combine Statistical_2018_Annex_Table_3 and Statistical_2018_Annex_Table_4 
-horizontally using a data-step match-merge;
-* note: After running the data step and proc sort step below several times
-  and averaging the fullstimer output in the system log, they tend to take
-  about 0.03 seconds of combined "real time" to execute and a maximum of
-  about 6.1 MB of memory (689 KB for the data step vs. 5520 KB for the
-  proc sort step) on the computer they were tested on;
-data Annex_Table_3_and_4_v1;
-    retain
-        Country
-        adjusted_life_index
-        Inequality_in_education
-        HDI
-        Mean_years_of_schooling_female
-		Mean_years_of_schooling_male
-		Year_School_Female
-		HDI_female
-		HDI_male
-    	Estimated_gross_national_income_
-    ;
-    keep
-        Country
-        adjusted_life_index
-        Inequality_in_education
-        HDI
-        Mean_years_of_schooling_female
-		Mean_years_of_schooling_male
-		Year_School_Female
-		HDI_female
-		HDI_male
-    	Estimated_gross_national_income_
-    ;
-    merge
-        Statistical_2018_Annex_Table_3
-        Statistical_2018_Annex_Table_4
-    ;
-    by Country;
-run;
-proc sort data=Annex_Table_3_and_4_v1; 
-	by Country; 
-run;
-
-
-* combine Statistical_2018_Annex_Table_3 and Statistical_2018_Annex_Table_4 
-horizontally using proc sql;
-* note: After running the proc sql step below several times and averaging the
-  fullstimer output in the system log, they tend to take about 0.02 seconds of
-  'real time' to execute and about 5.4 MB on the computer they were tested on;
-proc sql;
-    create table Annex_Table_3_and_4_v2 as
-        select
-             coalesce(A.Country,B.Country) as Country
-        	 ,adjusted_life_index
-       		 ,Inequality_in_education
-       		 ,HDI
-       		 ,Mean_years_of_schooling_female
-			 ,Mean_years_of_schooling_male
-			 ,Year_School_Female
-			 ,HDI_female
-			 ,HDI_male
-       		 ,Estimated_gross_national_income_
-        from
-            Statistical_2018_Annex_Table_3 as A
-            full join
-            Statistical_2018_Annex_Table_4 as B
-            on A.Country=B.Country
-        order by
+    * combine Statistical_2018_Annex_Table_3 and Statistical_2018_Annex_Table_4 
+    horizontally using a data-step match-merge;
+    * note: After running the data step and proc sort step below several times
+      and averaging the fullstimer output in the system log, they tend to take
+      about 0.03 seconds of combined "real time" to execute and a maximum of
+      about 6.1 MB of memory (689 KB for the data step vs. 5520 KB for the
+      proc sort step) on the computer they were tested on;
+    data Annex_Table_3_and_4_v1;
+        retain
             Country
-    ;
-quit;
+            adjusted_life_index
+            Inequality_in_education
+            HDI
+            Mean_years_of_schooling_female
+	    	Mean_years_of_schooling_male
+	    	Year_School_Female
+	    	HDI_female
+		    HDI_male
+    	    Estimated_gross_national_income_
+        ;
+        keep
+            Country
+            adjusted_life_index
+            Inequality_in_education
+            HDI
+            Mean_years_of_schooling_female
+		    Mean_years_of_schooling_male
+		    Year_School_Female
+		    HDI_female
+		    HDI_male
+    	    Estimated_gross_national_income_
+        ;
+        merge
+            Statistical_2018_Annex_Table_3
+            Statistical_2018_Annex_Table_4
+        ;
+        by Country;
+    run;
+    proc sort data=Annex_Table_3_and_4_v1; 
+    	by Country; 
+    run;
 
-proc compare
-        base=Annex_Table_3_and_4_v1
-        compare=Annex_Table_3_and_4_v2
-        novalues
-    ;
-run;
+
+    * combine Statistical_2018_Annex_Table_3 and Statistical_2018_Annex_Table_4 
+    horizontally using proc sql;
+    * note: After running the proc sql step below several times and averaging the
+      fullstimer output in the system log, they tend to take about 0.02 seconds of
+      'real time' to execute and about 5.4 MB on the computer they were tested on;
+    proc sql;
+        create table Annex_Table_3_and_4_v2 as
+            select
+                 coalesce(A.Country,B.Country) as Country
+        	     ,adjusted_life_index
+       		     ,Inequality_in_education
+       		     ,HDI
+       		     ,Mean_years_of_schooling_female
+			     ,Mean_years_of_schooling_male
+			     ,Year_School_Female
+			     ,HDI_female
+			     ,HDI_male
+       		     ,Estimated_gross_national_income_
+            from
+                Statistical_2018_Annex_Table_3 as A
+                full join
+                Statistical_2018_Annex_Table_4 as B
+                on A.Country=B.Country
+            order by
+                Country
+        ;
+    quit;
+
+
+
+    * verify that Annex_Table_3_and_4_v1 and Annex_Table_3_and_4_v2 are identical;
+    proc compare
+            base=Annex_Table_3_and_4_v1
+            compare=Annex_Table_3_and_4_v2
+            novalues
+        ;
+    run;
+    */
