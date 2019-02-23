@@ -521,7 +521,8 @@ columns and minimal data-cleaning/transformation needed to address each
 research questions/objectives in data-analysis files;
 proc sql;
     create table country_analytic_file_raw as
-        select (A.Country, B.Country, C.Country) as Country
+        select (A.Country, B.Country, C.Country)
+			 AS Country
 		    ,A.adjusted_life_index
             ,A.Inequality_in_education
             ,A.HDI
@@ -538,5 +539,61 @@ proc sql;
 		from
 		    (
 			    select
-				    cats(Country)
-					AS Country
+				     cats(Country)
+					 AS Country
+					,adjusted_life_index
+					 AS adjusted_life_index
+					,Inequality_in_education
+					 AS Inquality_in_education
+					,HDI
+					 AS HDI
+				from 
+				    Statistical_2018_Annex_Table_3
+            ) as A
+            full join
+			(
+			    select
+				     cats(Country)
+					 AS Country
+					,Mean_years_of_schooling_female
+					 AS Mean_years_schooling_f
+					,Mean_years_of_schooling_male
+					 AS Mean_years_schooling_m
+					,Year_School_Female
+					 AS Year_School_Female
+					,HDI_female
+					 AS HDI_female
+					,HDI_male
+					 AS HDI_male
+					,Estimated_gross_national_income_
+					 AS National_income
+				from
+				    Statistical_2018_Annex_Table_4
+			) as B
+			on A.Country = B.Country
+			full join
+			(
+			    select
+				     cats(Country)
+					 AS Country
+					,Population_in_severe_multidimens
+					 AS multidimens_poverty
+					,Percent_education_contribution_o
+					 AS education_contribution
+					,Multidimensional_Poverty_Index
+					 AS MPI
+					,Population_living_below_national
+					 AS Population_living_below_national
+				from
+				    Annex_Table_6_dups_fix
+			) as C
+			on A.Country = C.Country
+	order by
+	    Country
+	;
+quit;
+
+
+
+
+
