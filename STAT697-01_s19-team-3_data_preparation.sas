@@ -525,14 +525,17 @@ proc sql;
              coalesce(A.Country, B.Country, C.Country)
 			 AS Country
 		    ,A.adjusted_life_index
-            ,A.Inequality_in_education
-            ,A.HDI
-            ,B.Mean_years_of_schooling_female
+                ,A.Inequality_in_education
+                ,A.HDI
+                ,A.Inequality_in_life_expectancy
+                ,B.Mean_years_of_schooling_female
 	    	,B.Mean_years_of_schooling_male
 	    	,B.Year_School_Female
 	    	,B.HDI_female
 		    ,B.HDI_male
-    	    ,B.Estimated_gross_national_income_
+    	            ,B.Estimated_gross_national_income_
+                    ,B.Life_expectancy_at_birth_female
+                    ,B.Life_expectancy_at_birth_male
 			,C.Population_in_severe_multidimens
 			,C.Percent_education_contribution_o
 			,C.Multidimensional_Poverty_Index
@@ -548,6 +551,8 @@ proc sql;
 					 AS Inequality_in_education
 					,HDI
 					 AS HDI
+                                        ,Inequality_in_life_expectancy
+                                         AS Inequality_in_life_expectancy
 				from 
 				    Statistical_2018_Annex_Table_3
             ) as A
@@ -568,6 +573,10 @@ proc sql;
 					 AS HDI_male
 					,Estimated_gross_national_income_
 					 AS Estimated_gross_national_income_
+                                        ,Life_expectancy_at_birth_female
+                                         AS Life_expectancy_at_birth_female
+                                        ,Life_expectancy_at_birth_male
+                                         AS Life_expectancy_at_birth_male
 				from
 				    Statistical_2018_Annex_Table_4
 			) as B
