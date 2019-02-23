@@ -521,7 +521,8 @@ columns and minimal data-cleaning/transformation needed to address each
 research questions/objectives in data-analysis files;
 proc sql;
     create table country_analytic_file_raw as
-        select (A.Country, B.Country, C.Country)
+        select 
+             coalesce(A.Country, B.Country, C.Country)
 			 AS Country
 		    ,A.adjusted_life_index
             ,A.Inequality_in_education
