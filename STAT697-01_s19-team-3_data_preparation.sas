@@ -545,7 +545,7 @@ proc sql;
 					,adjusted_life_index
 					 AS adjusted_life_index
 					,Inequality_in_education
-					 AS Inquality_in_education
+					 AS Inequality_in_education
 					,HDI
 					 AS HDI
 				from 
@@ -557,9 +557,9 @@ proc sql;
 				     cats(Country)
 					 AS Country
 					,Mean_years_of_schooling_female
-					 AS Mean_years_schooling_f
+					 AS Mean_years_of_schooling_female
 					,Mean_years_of_schooling_male
-					 AS Mean_years_schooling_m
+					 AS Mean_years_of_schooling_male
 					,Year_School_Female
 					 AS Year_School_Female
 					,HDI_female
@@ -567,7 +567,7 @@ proc sql;
 					,HDI_male
 					 AS HDI_male
 					,Estimated_gross_national_income_
-					 AS National_income
+					 AS Estimated_gross_national_income_
 				from
 				    Statistical_2018_Annex_Table_4
 			) as B
@@ -578,11 +578,11 @@ proc sql;
 				     cats(Country)
 					 AS Country
 					,Population_in_severe_multidimens
-					 AS multidimens_poverty
+					 AS Population_in_severe_multidimens
 					,Percent_education_contribution_o
-					 AS education_contribution
+					 AS Percent_education_contribution_o
 					,Multidimensional_Poverty_Index
-					 AS MPI
+					 AS Multidimensional_Poverty_Index
 					,Population_living_below_national
 					 AS Population_living_below_national
 				from
@@ -594,7 +594,24 @@ proc sql;
 	;
 quit;
 
+* check country_analytic_file_raw for rows whose unique id values are repeated or
+missing
+* after executing this data step, results show no repeated or missing primary 
+id values;
+*/
+data country_raw_bad_ids;
+    set country_analytic_file_raw;
+    by Country;
 
+    if
+        first.Country*last.Country = 0
+        or
+        missing(Country)
+    then
+        do;
+            output;
+        end;
+run;
 
 
 
