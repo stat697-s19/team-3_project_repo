@@ -438,6 +438,11 @@ quit;
 
 * combine Statistical_2018_Annex_Table_3 and Statistical_2018_Annex_Table_4 
 horizontally using a data-step match-merge;
+* note: After running the data step and proc sort step below several times
+  and averaging the fullstimer output in the system log, they tend to take
+  about 0.03 seconds of combined "real time" to execute and a maximum of
+  about 6.1 MB of memory (689 KB for the data step vs. 5520 KB for the
+  proc sort step) on the computer they were tested on;
 data Annex_Table_3_and_4_v1;
     retain
         Country
@@ -469,11 +474,16 @@ data Annex_Table_3_and_4_v1;
     ;
     by Country;
 run;
-proc sort data=Annex_Table_3_and_4_v1;
-    by Country;
+proc sort data=Annex_Table_3_and_4_v1; 
+	by Country; 
 run;
 
 
+* combine Statistical_2018_Annex_Table_3 and Statistical_2018_Annex_Table_4 
+horizontally using proc sql;
+* note: After running the proc sql step below several times and averaging the
+  fullstimer output in the system log, they tend to take about 0.02 seconds of
+  'real time' to execute and about 5.4 MB on the computer they were tested on;
 proc sql;
     create table Annex_Table_3_and_4_v2 as
         select
