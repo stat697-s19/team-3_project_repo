@@ -515,3 +515,28 @@ quit;
         ;
     run;
     */
+
+* build analytic dataset from raw datasets imported above, including only the
+columns and minimal data-cleaning/transformation needed to address each
+research questions/objectives in data-analysis files;
+proc sql;
+    create table country_analytic_file_raw as
+        select (A.Country, B.Country, C.Country) as Country
+		    ,A.adjusted_life_index
+            ,A.Inequality_in_education
+            ,A.HDI
+            ,B.Mean_years_of_schooling_female
+	    	,B.Mean_years_of_schooling_male
+	    	,B.Year_School_Female
+	    	,B.HDI_female
+		    ,B.HDI_male
+    	    ,B.Estimated_gross_national_income_
+			,C.Population_in_severe_multidimens
+			,C.Percent_education_contribution_o
+			,C.Multidimensional_Poverty_Index
+			,C.Population_living_below_national
+		from
+		    (
+			    select
+				    cats(Country)
+					AS Country
