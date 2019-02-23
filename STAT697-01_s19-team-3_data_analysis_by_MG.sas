@@ -13,7 +13,7 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 *
-Question: Which country has the highest inequaality-adjusted education index?
+Question: Which country has the highest inequaality-adjusted life expectancy index?
 
 Rationale: This should help identify the which country has the lowest education 
 index and make appropriate action 
@@ -24,11 +24,19 @@ Statistical_Annex_Table_3.
 
 Limitations: The value in this dataset need to be numeric to perform mean and 
 median calculation. 
+
+Methodology: To proc sort the data in descending order and find the country has the 
+highest lift expectancy index which is Albania
+
+Followup Steps: Clear out any missing value.
 ;
 
-Proc sort data=Annex_Table_3_and_4_v2;
-By Country;
-proc print;
+* output first five row of resulting sorted data to better visualize the results;
+
+Proc sort 
+		data=country_analytic_file_raw (obs=5);
+		By descending adjusted_life_index ;
+	proc print;
 Run;
 
 *******************************************************************************;
@@ -46,10 +54,19 @@ schooling" to the column "Estimated gross national income per capita" from
 
 Limitations: The value in this dataset need to be numeric to perform mean and 
 median calculation
-;
 
-proc sgplot data=Annex_Table_3_and_4_v2;
-  scatter x=Year_School_Female y=Estimated_gross_national_income_;
+Methodology: To plot a scatterplot to visualize the trend of the reseach question.
+According to the graph, the longer of the female education, the higher of the female 
+gross national income
+
+Followup Steps: Run a linear regresssio analysis to determine whether there is a 
+strong correleation between the two variables.;
+
+* Construct a scatter plot to show the relationship between the two interested 
+variable;
+
+proc sgplot data=country_analytic_file_raw;
+  	scatter x=Year_School_Female y=Estimated_gross_national_income_;
 run;
 
 *******************************************************************************;
@@ -66,9 +83,16 @@ sat15 to the column "Population in severe multidimensional poverty from 2018
 Statistical_Annex_Table_6.
 
 Limitations: missing value may need to removed to perform general linear model
+
+Methodology: To sort the selected variable and find the highest severe 
+multidimensional poverty.
+
+Followup Steps: To make a boxplot of the data to see the distribution of data
 ;
 
-Proc sort data=Annex_Table_3_and_4_v2;
-By Country;
-proc print;
+* To sort the data in descending order to find the max value;
+
+Proc sort data=country_analytic_file_raw;
+		By descending Population_in_severe_multidimens;
+	proc print data=ming;
 Run;
