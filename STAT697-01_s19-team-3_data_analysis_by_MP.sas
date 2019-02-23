@@ -28,27 +28,25 @@ Statistical Annex Table 6.
 
 Limitations: Values denoted as ".." for the column "Inequality of Education" 
 should be excluded from analysis since they represent missing values.
+
+Methodology: Use proc corr to perform a correlation analysis, and then use proc
+sgplot to output a scatterplot to illustrate the correlation.
 ;
 
-proc sql;
-	create table Education_Inequality_and_Poverty as
-		select
-			coalesce(A.Country,B.Country) as Country
-			,Multidimensional_Poverty_Index
-			,Inequality_in_education
-		from
-			Annex_Table_3_and_4_v2 as A
-			full join
-			Statistical_2018_Annex_Table_6 as B
-			on A.Country=B.Country
-		order by
-			Country
-	;
-quit;
-
 proc corr 
-	data=Education_Inequality_and_Poverty;
-	var Multidimensional_Poverty_Index Inequality_in_education;
+	data=country_analytic_file_raw
+    ;
+	var 
+        Inequality_in_education 
+        MPI
+    ;
+run;
+
+proc sgplot data=country_analytic_file_raw;
+    scatter
+        x=Inequality_in_education
+        y=MPI
+    ;
 run;
 
 
@@ -70,33 +68,33 @@ Index" from 2018 Statistical Annex Table 6.
 Limitations: Values denoted as ".." for the columns "Mean years of schooling" 
 for both "Female" and "Male" should be excluded from analysis since they represent
 missing values.
+
+Methodology: Use proc sql to create a table for each gender, Mean_years_schooling_f 
+and Mean_years_schooling_m, listing characteristic values of the data including 
+the min, max, mean and median.
 ;
 
-
 proc sql;
    	select
-	 min(Mean_years_of_schooling_female) as min
-	,max(Mean_years_of_schooling_female) as max
-	,mean(Mean_years_of_schooling_female) as mean
-	,median(Mean_years_of_schooling_female) as median
+	 min(Mean_years_schooling_f) as min
+	,max(Mean_years_schooling_f) as max
+	,mean(Mean_years_schooling_f) as mean
+	,median(Mean_years_schooling_f) as median
     from
-	Annex_Table_3_and_4_v2
+	country_analytic_file_raw
    	;
 quit;
 
 proc sql;
    	select
-	 min(Mean_years_of_schooling_male) as min
-	,max(Mean_years_of_schooling_male) as max
-	,mean(Mean_years_of_schooling_male) as mean
-	,median(Mean_years_of_schooling_male) as median
+	 min(Mean_years_schooling_m) as min
+	,max(Mean_years_of_schooling_m) as max
+	,mean(Mean_years_schooling_m) as mean
+	,median(Mean_years_schooling_m) as median
     from
-	Annex_Table_3_and_4_v2
+	country_analytic_file_raw
    	;
 quit;
-
-
-
 
 
 *******************************************************************************;
@@ -116,25 +114,23 @@ Annex Table 3.
 Limitations: Missing values for the column "Population living below 
 national poverty line" should be excluded from analysis as there are 10 missing
 values indicated.
+
+Methodology: Use proc corr to perform a correlation analysis, and then use proc
+sgplot to output a scatterplot to illustrate the correlation.
 ;
 
-proc sql;
-	create table Poverty_and_HDI as
-		select
-			coalesce(A.Country,B.Country) as Country
-			,HDI
-			,Population_living_below_national
-		from
-			Annex_Table_3_and_4_v2 as A
-			full join
-			Statistical_2018_Annex_Table_6 as B
-			on A.Country=B.Country
-		order by
-			Country
-	;
-quit;
-
 proc corr 
-	data=Poverty_and_HDI;
-	var HDI Population_living_below_national;
+	data=country_analytic_file_raw
+    ;
+	var  
+        Population_living_below_national
+        HDI
+    ;
+run;
+
+proc sgplot data=country_analytic_file_raw;
+    scatter
+        x=Population_living_below_national
+        y=HDI
+    ;
 run;
