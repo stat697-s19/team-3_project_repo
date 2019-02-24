@@ -14,13 +14,13 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 *******************************************************************************;
 *
 Question: Is there evidence to indicate countries with a greater % of 
-"Inequality in Life Expectancy" also experience greater poverty as measured by 
+"Inequality in Education" also experience greater poverty as measured by 
 the "Multidimensional Poverty Index"?
 
-Rationale: This test would indicate an association between life expectancy and 
-poverty and if poverty can be an indicator of life expectancy. 
+Rationale: This test would indicate an association between education and 
+poverty and if poverty can be an indicator of education. 
 
-Note: This compares the column "Inequality of Life Expectancy" from 2018 
+Note: This compares the column "Inequality of Education" from 2018 
 Statistical Annex Table 3 to the column "Multidimensional Poverty Index" from 
 2018 Statistical Annex Table 6.
 
@@ -29,25 +29,24 @@ Expectancy" should be excluded from analysis since it represents missing values.
 ;
 
 
-proc sql;
-	create table Life_Expectancy_Inequality_and_Poverty as
-		select
-			coalesce(A.Country,B.Country) as Country
-			,Multidimensional_Poverty_Index
-			,Inequality_in_life_expectancy
-		from
-			Annex_Table_3_and_4_v2 as A
-			full join
-			Statistical_2018_Annex_Table_6 as B
-			on A.Country=B.Country
-		order by
-			Country
-	;
-quit;
+title3 justify=left
+'Correlation analysis for Inequality_in_education and Multidimensional_Poverty_Index'
+;
 
 proc corr 
-	data=Life_Expectancy_Inequality_and_Poverty;
-	var Multidimensional_Poverty_Index Inequality_in_life_expectancy;
+	    data=country_analytic_file_raw
+    ;
+	var 
+        Inequality_in_education 
+        Multidimensional_Poverty_Index
+    ;
+run;
+
+proc sgplot data=country_analytic_file_raw;
+    scatter
+        x=Inequality_in_education
+        y=Multidimensional_Poverty_Index
+    ;
 run;
 
 
@@ -55,13 +54,13 @@ run;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 *
-Question: Is there a strong association between "Life Expectancy at Birth" and
+Question: Is there a strong association between "Mean years of schooling" and
 the "Multidimensional Poverty Index" by gender?
 
 Rationale: This would show if there is an association between poverty levels 
-within a country and life expectancy between genders.
+within a country and schooling between genders.
 
-Note: This compares the column "Life expectancy at birth" from 2018 Statistical 
+Note: This compares the column "Mean years of schooling" from 2018 Statistical 
 Annex Table 4 to the column "Multudimensional Poverty Index" from 2018 
 Statistical Annex Table 6.
 
@@ -71,23 +70,23 @@ Limitations: missing values need to be addressed for glm and general data analys
 
 proc sql;
    	select
-	 min(Life_expectancy_at_birth_female) as min
-	,max(Life_expectancy_at_birth_female) as max
-	,mean(Life_expectancy_at_birth_female) as mean
-	,median(Life_expectancy_at_birth_female) as median
+	 min(Mean_years_of_schooling_female) as min
+	,max(Mean_years_of_schooling_female) as max
+	,mean(Mean_years_of_schooling_female) as mean
+	,median(Mean_years_of_schooling_female) as median
     from
-	Annex_Table_3_and_4_v2
+	country_analytic_file_raw
    	;
 quit;
 
 proc sql;
    	select
-	 min(Life_expectancy_at_birth_male) as min
-	,max(Life_expectancy_at_birth_male) as max
-	,mean(Life_expectancy_at_birth_male) as mean
-	,median(Life_expectancy_at_birth_male) as median
+	 min(Mean_years_of_schooling_male) as min
+	,max(Mean_years_of_schooling_male) as max
+	,mean(Mean_years_of_schooling_male) as mean
+	,median(Mean_years_of_schooling_male) as median
     from
-	Annex_Table_3_and_4_v2
+	country_analytic_file_raw
    	;
 quit;
 *******************************************************************************;
@@ -107,23 +106,18 @@ inequality" from 2018 Statistical Annex Table 3.
 Limitations: missing values need to be addressed for glm and general data analysis
 ;
 
-proc sql;
-	create table Poverty_and_Inequality as
-		select
-			coalesce(A.Country,B.Country) as Country
-			,Coefficient_of_human_inequality
-			,Population_living_below_national
-		from
-			Annex_Table_3_and_4_v2 as A
-			full join
-			Statistical_2018_Annex_Table_6 as B
-			on A.Country=B.Country
-		order by
-			Country
-	;
-quit;
-
 proc corr 
-	data=Poverty_and_Inequality;
-	var Coefficient_of_human_inequality Population_living_below_national;
+	data=country_analytic_file_raw
+    ;
+	var  
+        Population_living_below_national
+        HDI
+    ;
+run;
+
+proc sgplot data=country_analytic_file_raw;
+    scatter
+        x=Population_living_below_national
+        y=HDI
+    ;
 run;
