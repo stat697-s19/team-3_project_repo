@@ -76,7 +76,7 @@ run;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 *
-Question:Which country is experiencing the most severe multidimensional poverty?
+Question: Which country is experiencing the most severe multidimensional poverty?
 
 Rationale: This should help Non-profit organizaion to appropriate allocate 
 resources to the needest country. 
