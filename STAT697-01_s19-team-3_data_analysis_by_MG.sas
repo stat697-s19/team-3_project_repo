@@ -33,11 +33,13 @@ Followup Steps: Clear out any missing value.
 
 * output first five row of resulting sorted data to better visualize the results;
 
-Proc sort 
-		data=country_analytic_file_raw (obs=5);
-		By descending adjusted_life_index ;
-	proc print;
-Run;
+proc sort 
+	data=country_analytic_file_raw (obs=5);
+	by descending adjusted_life_index;
+run;
+	
+proc print;
+run;
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
@@ -65,7 +67,8 @@ strong correleation between the two variables.;
 * Construct a scatter plot to show the relationship between the two interested 
 variable;
 
-proc sgplot data=country_analytic_file_raw;
+proc sgplot 
+	data=country_analytic_file_raw;
   	scatter x=Year_School_Female y=Estimated_gross_national_income_;
 run;
 
@@ -92,7 +95,10 @@ Followup Steps: To make a boxplot of the data to see the distribution of data
 
 * To sort the data in descending order to find the max value;
 
-Proc sort data=country_analytic_file_raw;
-		By descending Population_in_severe_multidimens;
-	proc print data=ming;
-Run;
+proc sort 
+	data=country_analytic_file_raw;
+	by descending Population_in_severe_multidimens;
+run;
+
+proc print;
+run;
