@@ -12,12 +12,20 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
+title1 justify=left
+'Research Question: Which country has the highest inequaality-adjusted life expectancy index?'
+;
+
+title2 justify=left
+'Rationale: This should help identify the which country has the lowest education 
+index and make appropriate action'
+;
+
+footnote1 justify=left
+'The country has the most life expectancy index does not always has the highest human development index.'
+;
+
 *
-Question: Which country has the highest inequaality-adjusted life expectancy index?
-
-Rationale: This should help identify the which country has the lowest education 
-index and make appropriate action 
-
 Note: This compares the column "Country" to 
 the column of "Inequality-adjusted life expectancy Index from 2018 
 Statistical_Annex_Table_3.
@@ -44,12 +52,21 @@ run;
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
+
+title1 justify=left
+'Research Question: What is the correleation between year of school and income per capita?'
+;
+
+title2 justify=left
+'Rationale: This should help demonstrate whehter school can be a important factor 
+in national income value.'
+;
+
+footnote1 justify=left
+'Based on the correlation table, there is a positive correlation between these two variable'
+;
+
 *
-Question: What is the correleation between year of school and income per capita?
-
-Rationale: This should help demonstrate whehter school can be a important factor 
-in national income value. 
-
 Note: This compares the column "Expected years of 
 schooling" to the column "Estimated gross national income per capita" from 
 2018 Statistical_Annex_Table_4
@@ -72,15 +89,54 @@ proc sgplot
   	scatter x=Year_School_Female y=Estimated_gross_national_income_;
 run;
 
+data new; set country_analytic_file_raw;
+   		numeric_var = input(Year_School_Female, best5.);
+     where
+        not(missing(Year_School_Female))
+    ;
+run;
+
+   
+data work; set country_analytic_file_raw;
+	Year_School_Female2 = input(Year_School_Female, best7.);
+	Estimated_income_fe = input(Estimated_gross_national_income_, best7.);
+run;
+
+proc corr
+        data=work
+        nosimple
+    ;
+    var
+        Year_School_Female2
+        Estimated_income_fe
+    ;
+run;
+    where
+        not(missing(Year_School_Female2))
+        and
+        not(Estimated_income_fe))
+    ;
+run;
+
+
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
+
+title1 justify=left
+'Research Question: Which country is experiencing the most severe multidimensional poverty?'
+;
+
+title2 justify=left
+'Rationale: This should help Non-profit organizaion to appropriate allocate 
+resources to the needest country.'
+;
+
+footnote1 justify=left
+'Looks like majority of afrian country are in severe multidimenstional poverty'
+;
+
 *
-Question: Which country is experiencing the most severe multidimensional poverty?
-
-Rationale: This should help Non-profit organizaion to appropriate allocate 
-resources to the needest country. 
-
 Note: This compares the column "Country" from 
 sat15 to the column "Population in severe multidimensional poverty from 2018 
 Statistical_Annex_Table_6.
