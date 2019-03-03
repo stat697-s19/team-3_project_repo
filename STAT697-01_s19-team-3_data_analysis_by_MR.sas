@@ -12,35 +12,43 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
-*
-Question: Is there evidence to indicate countries with a greater % of 
-"Inequality in Education" also experience greater poverty as measured by 
-the "Multidimensional Poverty Index"?
-
-Rationale: This test would indicate an association between education and 
-poverty and if poverty can be an indicator of education. 
-
-Note: This compares the column "Inequality of Education" from 2018 
-Statistical Annex Table 3 to the column "Multidimensional Poverty Index" from 
-2018 Statistical Annex Table 6.
-
-Limitations: Values denoted as ".." for the column "Inequality of Life 
-Expectancy" should be excluded from analysis since it represents missing values.
-;
-
-
-title3 justify=left
+title1 justify=left
 'Correlation analysis for Inequality_in_education and Multidimensional_Poverty_Index'
 ;
 
+title2 justify=left
+'Rationale: This would indicate if there is an assocation between eduaction inequality and poverty, and if the former can be an indicator of poverty in a country.'
+;
+
+footnote1 justify=left
+"Observation: There is a positive correlation between HDI and Population living below national poverty."
+;
+
+footnote2 justify=left
+"Observation: Considering the correlation has a small R-squared value of 6.27 percent the absent values in our data and in subsequent data must be addressed."
+;
+
+footnote3 justify=left
+'This compares the column "Inequality of Education" from 2018 
+Statistical Annex Table 3 to the column "Multidimensional Poverty Index" from 
+2018 Statistical Annex Table 6.'
+;
+
+footnote4 justify=left
+'Limitations: Values denoted as ".." for the column "Inequality of Life 
+Expectancy" should be excluded from analysis since it represents missing values.'
+;
+
 proc corr 
-	    data=country_analytic_file_raw
+	    data=work
+		nosimple
     ;
 	var 
         Inequality_in_education 
         Multidimensional_Poverty_Index
     ;
 run;
+
 
 proc sgplot data=country_analytic_file_raw;
     scatter
@@ -53,20 +61,30 @@ run;
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
-*
-Question: Is there a strong association between "Mean years of schooling" and
-the "Multidimensional Poverty Index" by gender?
 
-Rationale: This would show if there is an association between poverty levels 
-within a country and schooling between genders.
 
-Note: This compares the column "Mean years of schooling" from 2018 Statistical 
-Annex Table 4 to the column "Multudimensional Poverty Index" from 2018 
-Statistical Annex Table 6.
+Note: 
 
 Limitations: missing values need to be addressed for glm and general data analysis
 ;
 
+title1 justify=left
+'Question: Is there a strong association between "Mean years of schooling" and the "Multidimensional Poverty Index" by gender?'
+;
+
+title2 justify=left
+'Rationale: This would show is their is an association between average years of schooling per country between genders and can potentially indicate gender disadvantages.'
+;
+
+footnote1 justify=left
+'This compares the column "Mean years of schooling" from 2018 Statistical 
+Annex Table 4 to the column "Multudimensional Poverty Index" from 2018 
+Statistical Annex Table 6.'
+;
+
+title2 justify=left
+'Rationale: This would show is their is an association between average years of schooling per country between genders and can potentially indicate gender disadvantages.'
+;
 
 proc sql;
    	select
@@ -89,22 +107,38 @@ proc sql;
 	country_analytic_file_raw
    	;
 quit;
+
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
-*
-Question: Can % of "Population living below the income poverty line" for 
-2006-2017 be used to predict the country's "Coefficient of human inequality"?
 
-Rationale: This can help to see how poverty levels are associated with a 
-country's inequality. 
-
-Note: This compares the column "Population_living_below_national_poverty_line" 
-from 2018 Statistical Annex Table 6 to the column "Coefficient of human 
-inequality" from 2018 Statistical Annex Table 3.
-
-Limitations: missing values need to be addressed for glm and general data analysis
+title1 justify=left
+"Plot illustrating the negative correlation between % Population living below the income poverty line for 2006-2017 and HDI?"
 ;
+
+title2 justify=left
+"Rationale: This has the potential to show us how poverty levels are associated with a country's Human Development Index."
+;
+
+footnote1 justify=left
+" There is a 68.5% negative correlation between HDI and Population living below national poverty."
+;
+
+footnote2 justify=left
+'This compares the column "Population_living_below_national_poverty_line" from 2018 Statistical Annex Table 6 to the column "HDI" from 2018 Statistical Annex Table 3.'
+;
+
+footnote3 justify=left
+'There are 10 missing values in the column "Population living below 
+national poverty line" that must be excluded from the analysis.'
+;
+
+proc sgplot data=country_analytic_file_raw;
+    scatter
+        x=Population_living_below_national
+        y=HDI
+    ;
+run;
 
 proc corr 
 	data=country_analytic_file_raw
@@ -112,12 +146,5 @@ proc corr
 	var  
         Population_living_below_national
         HDI
-    ;
-run;
-
-proc sgplot data=country_analytic_file_raw;
-    scatter
-        x=Population_living_below_national
-        y=HDI
     ;
 run;
