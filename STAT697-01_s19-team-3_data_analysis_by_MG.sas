@@ -13,7 +13,8 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 title1 justify=left
-'Research Question: Which country has the highest inequaality-adjusted life expectancy index?'
+'Research Question: Which country has the highest inequaality-adjusted life 
+expectancy index?'
 ;
 
 title2 justify=left
@@ -22,7 +23,8 @@ index and make appropriate action'
 ;
 
 footnote1 justify=left
-'The country has the most life expectancy index does not always has the highest human development index.'
+'The country has the most life expectancy index does not always has the highest 
+human development index.'
 ;
 
 *
@@ -33,8 +35,8 @@ Statistical_Annex_Table_3.
 Limitations: The value in this dataset need to be numeric to perform mean and 
 median calculation. 
 
-Methodology: To proc sort the data in descending order and find the country has the 
-highest lift expectancy index which is Albania
+Methodology: To proc sort the data in descending order and find the country 
+has the highest lift expectancy index which is Albania
 
 Followup Steps: Clear out any missing value.
 ;
@@ -54,7 +56,8 @@ run;
 *******************************************************************************;
 
 title1 justify=left
-'Research Question: What is the correleation between year of school and income per capita?'
+'Research Question: What is the correleation between year of school and income per 
+capita?'
 ;
 
 title2 justify=left
@@ -63,7 +66,8 @@ in national income value.'
 ;
 
 footnote1 justify=left
-'Based on the correlation table, there is a positive correlation between these two variable'
+'Based on the correlation table, there is a positive correlation between these two 
+variable'
 ;
 
 *
@@ -124,7 +128,8 @@ run;
 *******************************************************************************;
 
 title1 justify=left
-'Research Question: Which country is experiencing the most severe multidimensional poverty?'
+'Research Question: Which country is experiencing the most severe multidimensional 
+poverty?'
 ;
 
 title2 justify=left
