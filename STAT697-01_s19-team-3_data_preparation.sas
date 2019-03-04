@@ -127,7 +127,6 @@ https://github.com/stat697/team-3_project_repo/blob/master/data/2018_Statistical
 there is no need to implement a mitigation strategy for this dataset;
     
 proc sql;
-
     create table Annex_Table_3_dups as
         select
             Country
@@ -135,8 +134,7 @@ proc sql;
         from
             Statistical_2018_Annex_Table_3
         group by
-			Country            
-          
+            Country            
         having
             row_count_for_unique_id_value > 1
     ;
@@ -146,7 +144,6 @@ quit;
 there is no need to implement a mitigation strategy for this dataset;
 
 proc sql;
-
     create table Annex_Table_4_dups as
         select
             Country
@@ -154,8 +151,7 @@ proc sql;
         from
             Statistical_2018_Annex_Table_4
         group by
-			Country            
-          
+            Country               
         having
             row_count_for_unique_id_value > 1
     ;
@@ -165,7 +161,6 @@ quit;
 mitigation strategy is developed and implemented per the code below;
 
 proc sql;
-
     create table Annex_Table_6_dups as
         select
             Country
@@ -173,8 +168,7 @@ proc sql;
         from
             Statistical_2018_Annex_Table_6
         group by
-			Country            
-          
+	    Country            
         having
             row_count_for_unique_id_value > 1
     ;
@@ -199,84 +193,84 @@ proc sql;
     create table country_analytic_file_raw as
         select 
              coalesce(A.Country, B.Country, C.Country)
-			 AS Country
-		    ,A.adjusted_life_index
-                ,A.Inequality_in_education
-                ,A.HDI
-                ,A.Inequality_in_life_expectancy
-                ,B.Mean_years_of_schooling_female
-	    	,B.Mean_years_of_schooling_male
-	    	,B.Year_School_Female
-	    	,B.HDI_female
-		    ,B.HDI_male
-    	            ,B.Estimated_gross_national_income_
-                    ,B.Life_expectancy_at_birth_female
-                    ,B.Life_expectancy_at_birth_male
-			,C.Population_in_severe_multidimens
-			,C.Percent_education_contribution_o
-			,C.Multidimensional_Poverty_Index
-			,C.Population_living_below_national
-		from
-		    (
-			    select
-				     cats(Country)
-					 AS Country
-					,adjusted_life_index
-					 AS adjusted_life_index
-					,Inequality_in_education
-					 AS Inequality_in_education
-					,HDI
-					 AS HDI
-                                        ,Inequality_in_life_expectancy
-                                         AS Inequality_in_life_expectancy
-				from 
-				    Statistical_2018_Annex_Table_3
+             AS Country
+            ,A.adjusted_life_index
+            ,A.Inequality_in_education
+            ,A.HDI
+            ,A.Inequality_in_life_expectancy
+            ,B.Mean_years_of_schooling_female
+            ,B.Mean_years_of_schooling_male
+            ,B.Year_School_Female
+            ,B.HDI_female
+            ,B.HDI_male
+            ,B.Estimated_gross_national_income_
+            ,B.Life_expectancy_at_birth_female
+            ,B.Life_expectancy_at_birth_male
+            ,C.Population_in_severe_multidimens
+            ,C.Percent_education_contribution_o
+            ,C.Multidimensional_Poverty_Index
+            ,C.Population_living_below_national
+        from
+            (
+                select
+                     cats(Country)
+                     AS Country
+                    ,adjusted_life_index
+                     AS adjusted_life_index
+                    ,Inequality_in_education
+                     AS Inequality_in_education
+                    ,HDI
+                     AS HDI
+                    ,Inequality_in_life_expectancy
+                     AS Inequality_in_life_expectancy
+                from 
+                    Statistical_2018_Annex_Table_3
             ) as A
             full join
-			(
-			    select
-				     cats(Country)
-					 AS Country
-					,Mean_years_of_schooling_female
-					 AS Mean_years_of_schooling_female
-					,Mean_years_of_schooling_male
-					 AS Mean_years_of_schooling_male
-					,Year_School_Female
-					 AS Year_School_Female
-					,HDI_female
-					 AS HDI_female
-					,HDI_male
-					 AS HDI_male
-					,Estimated_gross_national_income_
-					 AS Estimated_gross_national_income_
-                                        ,Life_expectancy_at_birth_female
-                                         AS Life_expectancy_at_birth_female
-                                        ,Life_expectancy_at_birth_male
-                                         AS Life_expectancy_at_birth_male
-				from
-				    Statistical_2018_Annex_Table_4
-			) as B
-			on A.Country = B.Country
-			full join
-			(
-			    select
-				     cats(Country)
-					 AS Country
-					,Population_in_severe_multidimens
-					 AS Population_in_severe_multidimens
-					,Percent_education_contribution_o
-					 AS Percent_education_contribution_o
-					,Multidimensional_Poverty_Index
-					 AS Multidimensional_Poverty_Index
-					,Population_living_below_national
-					 AS Population_living_below_national
-				from
-				    Annex_Table_6_dups_fix
-			) as C
-			on A.Country = C.Country
-	order by
-	    Country
-	;
+            (
+                select
+                     cats(Country)
+                     AS Country
+                    ,Mean_years_of_schooling_female
+                     AS Mean_years_of_schooling_female
+                    ,Mean_years_of_schooling_male
+                     AS Mean_years_of_schooling_male
+                    ,Year_School_Female
+                     AS Year_School_Female
+                    ,HDI_female
+                     AS HDI_female
+                    ,HDI_male
+                     AS HDI_male
+                    ,Estimated_gross_national_income_
+                     AS Estimated_gross_national_income_
+                    ,Life_expectancy_at_birth_female
+                     AS Life_expectancy_at_birth_female
+                    ,Life_expectancy_at_birth_male
+                     AS Life_expectancy_at_birth_male
+                from
+                    Statistical_2018_Annex_Table_4
+            ) as B
+            on A.Country = B.Country
+            full join
+            (
+                select
+                     cats(Country)
+                     AS Country
+                    ,Population_in_severe_multidimens
+                     AS Population_in_severe_multidimens
+                    ,Percent_education_contribution_o
+                     AS Percent_education_contribution_o
+                    ,Multidimensional_Poverty_Index
+                     AS Multidimensional_Poverty_Index
+                    ,Population_living_below_national
+                     AS Population_living_below_national
+                from
+                    Annex_Table_6_dups_fix
+            ) as C
+            on A.Country = C.Country
+    order by
+        Country
+    ;
 quit;
 
 * check country_analytic_file_raw for rows whose unique id values are repeated or
