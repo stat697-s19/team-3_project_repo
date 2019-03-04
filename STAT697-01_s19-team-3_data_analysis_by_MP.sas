@@ -16,7 +16,7 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 *******************************************************************************;
 
 title1 justify=left
-'Question: Is there evidence that countries with a greater % of Inequality of Education also suffer from greater poverty as measured by the Multidimensional Poverty Index?'
+'Question: Is there evidence that countries with a greater percent of Inequality of Education also suffer from greater poverty as measured by the Multidimensional Poverty Index?'
 ;
 
 title2 justify=left
@@ -41,7 +41,7 @@ degre of association between the two variables and the type of relationship.
 
 
 title3 justify=left
-'Correlation analysis for Inequality_in_education and Multidimensional_Poverty_Index'
+'Correlation analysis for Inequality in education and Multidimensional Poverty Index'
 ;
 
 footnote1 justify=left
@@ -57,29 +57,27 @@ footnote3 justify=left
 ;
 
 
-data work1; set country_analytic_file_raw;
-Inequality_in_education1 = input(Inequality_in_education, best7.);
-Multidimensional_Poverty_Index1 = input(Multidimensional_Poverty_Index, best7.);
+data work1; 
+    set country_analytic_file_raw;
+        if Inequality_in_education='..' then delete;
+        if Inequality_in_education='.' then delete;
+        if Inequality_in_education=' ' then delete;
+        Inequality_in_education1 = input(Inequality_in_education, 7.);
 run;
 
 proc corr 
-	    data=work1
+        data=work1
     ;
 	var 
         Inequality_in_education1
-        Multidimensional_Poverty_Index1
-	;
-	where
-        not(missing(Inequality_in_education1))
-        and
-        not(missing(Multidimensional_Poverty_Index1))
-	;
+        Multidimensional_Poverty_Index
+    ;
 run;
 
 proc sgplot data=work1;
     scatter
         x=Inequality_in_education1
-        y=Multidimensional_Poverty_Index1
+        y=Multidimensional_Poverty_Index
     ;
 run;
 
@@ -127,31 +125,32 @@ Followup Steps: Use proc ttest to perform a comparison of group means between th
 two genders for mean years of schooling.
 ;
 
-data work; set country_analytic_file_raw;
-Mean_years_of_schooling_female1 = input(Mean_years_of_schooling_female, best7.);
-Mean_years_of_schooling_male1 = input(Mean_years_of_schooling_male, best7.);
+data work; 
+    set country_analytic_file_raw;
+        Mean_years_of_schooling_female1 = input(Mean_years_of_schooling_female, best7.);
+        Mean_years_of_schooling_male1 = input(Mean_years_of_schooling_male, best7.);
 run;
 
 
 proc sql;
-   	select
-		 min(Mean_years_of_schooling_female1) as min
-		,max(Mean_years_of_schooling_female1) as max
-		,mean(Mean_years_of_schooling_female1) as mean
-		,median(Mean_years_of_schooling_female1) as median
+    select
+         min(Mean_years_of_schooling_female1) as min
+        ,max(Mean_years_of_schooling_female1) as max
+        ,mean(Mean_years_of_schooling_female1) as mean
+        ,median(Mean_years_of_schooling_female1) as median
     from
-		work
-   	;
+        work
+    ;
 quit;
 
 proc sql;
-   	select
-	 min(Mean_years_of_schooling_male1) as min
-	,max(Mean_years_of_schooling_male1) as max
-	,mean(Mean_years_of_schooling_male1) as mean
-	,median(Mean_years_of_schooling_male1) as median
+    select
+         min(Mean_years_of_schooling_male1) as min
+        ,max(Mean_years_of_schooling_male1) as max
+        ,mean(Mean_years_of_schooling_male1) as mean
+        ,median(Mean_years_of_schooling_male1) as median
     from
-	work
+        work
    	;
 quit;
 
@@ -192,7 +191,7 @@ degre of association between the two variables and the type of relationship.
 ;
 
 title3 jusitfy=left
-'Correlation analysis for Population_living_below_national and HDI'
+'Correlation analysis for Population living below national and HDI'
 ;
 
 footnote1 justify=left
@@ -208,9 +207,9 @@ footnote3 justify=left
 ;
 
 proc corr 
-	data=country_analytic_file_raw
+    data=country_analytic_file_raw
     ;
-	var  
+    var  
         Population_living_below_national
         HDI
     ;
