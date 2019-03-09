@@ -29,14 +29,11 @@ footnote2 justify=left
 ;
 
 footnote3 justify=left
-'This compares the column "Inequality of Education" from 2018 
-Statistical Annex Table 3 to the column "Multidimensional Poverty Index" from 
-2018 Statistical Annex Table 6.'
+'This compares the column "Inequality of Education" from 2018 Statistical Annex Table 3 to the column "Multidimensional Poverty Index" from 2018 Statistical Annex Table 6.'
 ;
 
 footnote4 justify=left
-'Limitations: Values denoted as ".." for the column "Inequality of Life 
-Expectancy" should be excluded from analysis since it represents missing values.'
+'Limitations: Values denoted as ".." for the column "Inequality of Life Expectancy" should be excluded from analysis since it represents missing values.'
 ;
 
 proc corr 
@@ -77,9 +74,7 @@ title2 justify=left
 ;
 
 footnote1 justify=left
-'This compares the column "Mean years of schooling" from 2018 Statistical 
-Annex Table 4 to the column "Multudimensional Poverty Index" from 2018 
-Statistical Annex Table 6.'
+'This compares the column "Mean years of schooling" from 2018 Statistical Annex Table 4 to the column "Multudimensional Poverty Index" from 2018 Statistical Annex Table 6.'
 ;
 
 title2 justify=left
@@ -129,8 +124,7 @@ footnote2 justify=left
 ;
 
 footnote3 justify=left
-'There are 10 missing values in the column "Population living below 
-national poverty line" that must be excluded from the analysis.'
+'There are 10 missing values in the column "Population living below national poverty line" that must be excluded from the analysis.'
 ;
 
 proc sgplot data=country_analytic_file_raw;

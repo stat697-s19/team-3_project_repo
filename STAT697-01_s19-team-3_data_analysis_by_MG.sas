@@ -99,8 +99,15 @@ proc sgplot
 run;
 
 data new; set country_analytic_file_raw;
+
    		numeric_var = input(Year_School_Female, best5.);
-    where
+      
+     where
+
+   	  numeric_var = input(Year_School_Female, best5.);
+      
+     where
+     
         not(missing(Year_School_Female))
     ;
 run;
