@@ -13,18 +13,15 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 title1 justify=left
-'Research Question: Which country has the highest inequaality-adjusted life 
-expectancy index?'
+'Research Question: Which country has the highest inequaality-adjusted life expectancy index?'
 ;
 
 title2 justify=left
-'Rationale: This should help identify the which country has the lowest education 
-index and make appropriate action'
+'Rationale: This should help identify the which country has the lowest education index and make appropriate action'
 ;
 
 footnote1 justify=left
-'The country has the most life expectancy index does not always has the highest 
-human development index.'
+'The country has the most life expectancy index does not always has the highest human development index.'
 ;
 
 *
@@ -44,30 +41,38 @@ Followup Steps: Clear out any missing value.
 * output first five row of resulting sorted data to better visualize the results;
 
 proc sort 
-	data=country_analytic_file_raw (obs=5);
-	by descending adjusted_life_index;
+		data=country_analytic_file_raw (obs=5)
+		out = country_analystic_file_raw_Q1;
+	;
+	by 
+		descending adjusted_life_index;
 run;
 	
-proc print;
+proc report data=country_analystic_file_raw_Q1;
+	columns
+		Country
+		adjusted_life_index
+	;
 run;
+
+* clear titles/footnotes;
+title;
+footnote;
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 
 title1 justify=left
-'Research Question: What is the correleation between year of school and income per 
-capita?'
+'Research Question: What is the correleation between year of school and income per capita?'
 ;
 
 title2 justify=left
-'Rationale: This should help demonstrate whehter school can be a important factor 
-in national income value.'
+'Rationale: This should help demonstrate whehter school can be a important factor in national income value.'
 ;
 
 footnote1 justify=left
-'Based on the correlation table, there is a positive correlation between these two 
-variable'
+'Based on the correlation table, there is a positive correlation between these two variable'
 ;
 
 *
@@ -89,21 +94,21 @@ strong correleation between the two variables.;
 variable;
 
 proc sgplot 
-	data=country_analytic_file_raw;
-  	scatter x=Year_School_Female y=Estimated_gross_national_income_;
+		data=country_analytic_file_raw;
+  		scatter x=Year_School_Female y=Estimated_gross_national_income_;
 run;
 
 data new; set country_analytic_file_raw;
    		numeric_var = input(Year_School_Female, best5.);
-     where
+    where
         not(missing(Year_School_Female))
     ;
 run;
 
    
 data work; set country_analytic_file_raw;
-	Year_School_Female2 = input(Year_School_Female, best7.);
-	Estimated_income_fe = input(Estimated_gross_national_income_, best7.);
+		Year_School_Female2 = input(Year_School_Female, best7.);
+		Estimated_income_fe = input(Estimated_gross_national_income_, best7.);
 run;
 
 proc corr
@@ -122,19 +127,20 @@ run;
     ;
 run;
 
+* clear titles/footnotes;
+title;
+footnote;
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 
 title1 justify=left
-'Research Question: Which country is experiencing the most severe multidimensional 
-poverty?'
+'Research Question: Which country is experiencing the most severe multidimensional poverty?'
 ;
 
 title2 justify=left
-'Rationale: This should help Non-profit organizaion to appropriate allocate 
-resources to the needest country.'
+'Rationale: This should help Non-profit organizaion to appropriate allocate resources to the needest country.'
 ;
 
 footnote1 justify=left
@@ -157,9 +163,15 @@ Followup Steps: To make a boxplot of the data to see the distribution of data
 * To sort the data in descending order to find the max value;
 
 proc sort 
-	data=country_analytic_file_raw;
-	by descending Population_in_severe_multidimens;
+		data=country_analytic_file_raw
+	;
+	by 
+		descending Population_in_severe_multidimens;
 run;
 
 proc print;
 run;
+
+* clear titles/footnotes;
+title;
+footnote;
