@@ -170,6 +170,7 @@ proc sort
 run;
 
 proc print;
+
 run;
 
 * clear titles/footnotes;
