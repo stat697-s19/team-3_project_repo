@@ -13,18 +13,15 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 title1 justify=left
-'Research Question: Which country has the highest inequaality-adjusted life 
-expectancy index?'
+'Research Question: Which country has the highest inequaality-adjusted life expectancy index?'
 ;
 
 title2 justify=left
-'Rationale: This should help identify the which country has the lowest education 
-index and make appropriate action'
+'Rationale: This should help identify the which country has the lowest education index and make appropriate action'
 ;
 
 footnote1 justify=left
-'The country has the most life expectancy index does not always has the highest 
-human development index.'
+'The country has the most life expectancy index does not always has the highest human development index.'
 ;
 
 *
@@ -56,18 +53,15 @@ run;
 *******************************************************************************;
 
 title1 justify=left
-'Research Question: What is the correleation between year of school and income per 
-capita?'
+'Research Question: What is the correleation between year of school and income per capita?'
 ;
 
 title2 justify=left
-'Rationale: This should help demonstrate whehter school can be a important factor 
-in national income value.'
+'Rationale: This should help demonstrate whehter school can be a important factor in national income value.'
 ;
 
 footnote1 justify=left
-'Based on the correlation table, there is a positive correlation between these two 
-variable'
+'Based on the correlation table, there is a positive correlation between these two variable'
 ;
 
 *
@@ -94,7 +88,7 @@ proc sgplot
 run;
 
 data new; set country_analytic_file_raw;
-   		numeric_var = input(Year_School_Female, best5.);
+   	numeric_var = input(Year_School_Female, best5.);
      where
         not(missing(Year_School_Female))
     ;
@@ -128,13 +122,11 @@ run;
 *******************************************************************************;
 
 title1 justify=left
-'Research Question: Which country is experiencing the most severe multidimensional 
-poverty?'
+'Research Question: Which country is experiencing the most severe multidimensional poverty?'
 ;
 
 title2 justify=left
-'Rationale: This should help Non-profit organizaion to appropriate allocate 
-resources to the needest country.'
+'Rationale: This should help Non-profit organizaion to appropriate allocate resources to the needest country.'
 ;
 
 footnote1 justify=left
