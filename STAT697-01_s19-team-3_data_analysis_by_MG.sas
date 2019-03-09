@@ -52,7 +52,7 @@ proc report data=country_analystic_file_raw_Q1;
 	columns
 	       	Country
 		adjusted_life_index
-	;
+    ;
 run;
 
 * clear titles/footnotes;
