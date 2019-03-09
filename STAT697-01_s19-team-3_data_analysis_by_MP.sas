@@ -74,6 +74,17 @@ proc corr
     ;
 run;
 
+title;
+footnote;
+
+
+title1
+'Plot illustrating the positive correlation between Inequality in education and Multidimensional Poverty Index'
+;
+
+footnote1
+'In the above plot, we can see how values for percent of Inequality of education tend to increase as the values for the Multidimensional Poverty Index increase.'
+;
 proc sgplot data=work1;
     scatter
         x=Inequality_in_education1
@@ -117,13 +128,13 @@ Limitations: Values denoted as ".." for the columns Mean years of schooling
 for both Female and Male should be excluded from analysis since they represent
 missing values.
 
-Methodology: Use proc sql to create a table for each gender, Mean_years_schooling_f 
-and Mean_years_schooling_m, listing characteristic values of the data including 
-the min, max, mean and median.
+Methodology: Use proc ttest to perform a paired comparison of group means between
+the two genders for mean years of schooling. Use proc report to create a table 
+for Mean_years_schooling_f and Mean_years_schooling_m, listing characteristic 
+values of the data including the min, max, mean and median. 
 
-Followup Steps: Use proc ttest to perform a comparison of group means between the
-two genders for mean years of schooling.
-;
+Followup Steps: Display a visual of the summary statistics such as a boxplot to 
+further illustrate the difference between genders.
 
 data work; 
     set country_analytic_file_raw;
@@ -131,31 +142,34 @@ data work;
         Mean_years_of_schooling_male1 = input(Mean_years_of_schooling_male, best7.);
 run;
 
-
-proc sql;
-    select
-         min(Mean_years_of_schooling_female1) as min
-        ,max(Mean_years_of_schooling_female1) as max
-        ,mean(Mean_years_of_schooling_female1) as mean
-        ,median(Mean_years_of_schooling_female1) as median
-    from
-        work
-    ;
-quit;
-
-proc sql;
-    select
-         min(Mean_years_of_schooling_male1) as min
-        ,max(Mean_years_of_schooling_male1) as max
-        ,mean(Mean_years_of_schooling_male1) as mean
-        ,median(Mean_years_of_schooling_male1) as median
-    from
-        work
-   	;
-quit;
-
 proc ttest;
     paired Mean_years_of_schooling_male1*Mean_years_of_schooling_female1;
+run;
+
+title;
+footnote;
+
+title1
+'Comparing the summary statistics for females and males regarding Mean years of Schooling.'
+;
+
+footnote1
+'We can observe that the min, max, mean and median values for mean years of schooling per country are each higher for males than for females.'
+;
+
+proc report data=work;
+    column Mean_years_of_schooling_female1=minf Mean_years_of_schooling_female1=maxf
+           Mean_years_of_schooling_female1=avgf Mean_years_of_schooling_female1=medf
+           Mean_years_of_schooling_male1=minm Mean_years_of_schooling_male1=maxm
+		   Mean_years_of_schooling_male1=avgm Mean_years_of_schooling_male1=medm;
+	define minf/min 'Female Min';
+	define maxf/max 'Female Max';
+	define avgf/mean 'Female Mean';
+	define medf/median 'Female Median';
+	define minm/min 'Male Min';
+	define maxm/max 'Male Max';
+	define avgm/mean 'Male Mean';
+	define medm/median 'Male Median';
 run;
 
 title;
@@ -190,7 +204,7 @@ Followup Steps: Perform a more formal linear regression analysis to measure the
 degre of association between the two variables and the type of relationship.
 ;
 
-title3 jusitfy=left
+title3 
 'Correlation analysis for Population living below national and HDI'
 ;
 
@@ -214,6 +228,17 @@ proc corr
         HDI
     ;
 run;
+
+title;
+footnote;
+
+title1
+'Plot illustrating the negative correlation between Population living below the national poverty line and the Human Development Index'
+;
+
+footnote1
+'In the above plot, we can see how values of percent of Population living below the national poverty line tend to decrease as values for the Human Development Index increase.'
+;
 
 proc sgplot data=country_analytic_file_raw;
     scatter
