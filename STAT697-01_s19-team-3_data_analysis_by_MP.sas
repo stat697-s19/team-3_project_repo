@@ -128,19 +128,34 @@ Limitations: Values denoted as ".." for the columns Mean years of schooling
 for both Female and Male should be excluded from analysis since they represent
 missing values.
 
-Methodology: Use proc report to create a table for Mean_years_schooling_f 
-and Mean_years_schooling_m, listing characteristic values of the data including 
-the min, max, mean and median. Then use proc ttest to perform a comparison of group
-means between the two genders for mean years of schooling.
+Methodology: Use proc ttest to perform a paired comparison of group means between
+the two genders for mean years of schooling. Use proc report to create a table 
+for Mean_years_schooling_f and Mean_years_schooling_m, listing characteristic 
+values of the data including the min, max, mean and median. 
 
-Followup Steps: 
-;
+Followup Steps: Display a visual of the summary statistics such as a boxplot to 
+further illustrate the difference between genders.
 
 data work; 
     set country_analytic_file_raw;
         Mean_years_of_schooling_female1 = input(Mean_years_of_schooling_female, best7.);
         Mean_years_of_schooling_male1 = input(Mean_years_of_schooling_male, best7.);
 run;
+
+proc ttest;
+    paired Mean_years_of_schooling_male1*Mean_years_of_schooling_female1;
+run;
+
+title;
+footnote;
+
+title1
+'Comparing the summary statistics for females and males regarding Mean years of Schooling.'
+;
+
+footnote1
+'We can observe that the min, max, mean and median values for mean years of schooling per country are each higher for males than for females.'
+;
 
 proc report data=work;
     column Mean_years_of_schooling_female1=minf Mean_years_of_schooling_female1=maxf
@@ -155,10 +170,6 @@ proc report data=work;
 	define maxm/max 'Male Max';
 	define avgm/mean 'Male Mean';
 	define medm/median 'Male Median';
-run;
-
-proc ttest;
-    paired Mean_years_of_schooling_male1*Mean_years_of_schooling_female1;
 run;
 
 title;
