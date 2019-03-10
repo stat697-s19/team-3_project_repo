@@ -41,17 +41,31 @@ Followup Steps: Clear out any missing value.
 * output first five row of resulting sorted data to better visualize the results;
 
 proc sort 
+
         data=country_analytic_file_raw (obs=5)
         out = country_analystic_file_raw_Q1;
     ;
     by 
         descending adjusted_life_index;
+
+	data=country_analytic_file_raw (obs=5)
+	out = country_analystic_file_raw_Q1;
+    ;
+    by 
+	descending adjusted_life_index;
+
 run;
     
 proc report data=country_analystic_file_raw_Q1;
+
     columns
         Country
         adjusted_life_index
+=======
+	columns
+	       	Country
+		adjusted_life_index
+
     ;
 run;
 
@@ -94,6 +108,7 @@ strong correleation between the two variables.;
 variable;
 
 proc sgplot 
+
         data=country_analytic_file_raw;
         scatter x=Year_School_Female y=Estimated_gross_national_income_;
 run;
@@ -103,6 +118,22 @@ data new;
     numeric_var = input(Year_School_Female, best5.);
 
     where
+=======
+	data=country_analytic_file_raw;
+  	scatter x=Year_School_Female y=Estimated_gross_national_income_;
+run;
+
+data new; set country_analytic_file_raw;
+
+   	numeric_var = input(Year_School_Female, best5.);
+      
+     where
+
+   	numeric_var = input(Year_School_Female, best5.);
+      
+     where
+     
+
         not(missing(Year_School_Female))
     ;
 run;
@@ -160,10 +191,17 @@ Followup Steps: To make a boxplot of the data to see the distribution of data
 * To sort the data in descending order to find the max value;
 
 proc sort 
+
         data=country_analytic_file_raw
     ;
     by 
         descending Population_in_severe_multidimens;
+
+	data=country_analytic_file_raw
+   ;
+   by 
+	descending Population_in_severe_multidimens;
+
 run;
 
 proc print;
