@@ -158,18 +158,22 @@ footnote1
 ;
 
 proc report data=work;
-    column Mean_years_of_schooling_female1=minf Mean_years_of_schooling_female1=maxf
-           Mean_years_of_schooling_female1=avgf Mean_years_of_schooling_female1=medf
-           Mean_years_of_schooling_male1=minm Mean_years_of_schooling_male1=maxm
-		   Mean_years_of_schooling_male1=avgm Mean_years_of_schooling_male1=medm;
-	define minf/min 'Female Min';
-	define maxf/max 'Female Max';
-	define avgf/mean 'Female Mean';
-	define medf/median 'Female Median';
-	define minm/min 'Male Min';
-	define maxm/max 'Male Max';
-	define avgm/mean 'Male Mean';
-	define medm/median 'Male Median';
+    column Mean_years_of_schooling_female1=minf 
+           Mean_years_of_schooling_female1=maxf
+           Mean_years_of_schooling_female1=avgf 
+           Mean_years_of_schooling_female1=medf
+           Mean_years_of_schooling_male1=minm 
+           Mean_years_of_schooling_male1=maxm
+           Mean_years_of_schooling_male1=avgm 
+           Mean_years_of_schooling_male1=medm;
+    define minf/min 'Female Min';
+    define maxf/max 'Female Max';
+    define avgf/mean 'Female Mean';
+    define medf/median 'Female Median';
+    define minm/min 'Male Min';
+    define maxm/max 'Male Max';
+    define avgm/mean 'Male Mean';
+    define medm/median 'Male Median';
 run;
 
 title;
