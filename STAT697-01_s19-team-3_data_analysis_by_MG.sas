@@ -8,7 +8,7 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 
 * load external file that will generate final analytic file;
 %include '.\STAT697-01_s19-team-3_data_preparation.sas';
-
+    
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
@@ -41,17 +41,31 @@ Followup Steps: Clear out any missing value.
 * output first five row of resulting sorted data to better visualize the results;
 
 proc sort 
+
+        data=country_analytic_file_raw (obs=5)
+        out = country_analystic_file_raw_Q1;
+    ;
+    by 
+        descending adjusted_life_index;
+
 	data=country_analytic_file_raw (obs=5)
 	out = country_analystic_file_raw_Q1;
     ;
     by 
 	descending adjusted_life_index;
+
 run;
-	
+    
 proc report data=country_analystic_file_raw_Q1;
+
+    columns
+        Country
+        adjusted_life_index
+=======
 	columns
 	       	Country
 		adjusted_life_index
+
     ;
 run;
 
@@ -94,6 +108,17 @@ strong correleation between the two variables.;
 variable;
 
 proc sgplot 
+
+        data=country_analytic_file_raw;
+        scatter x=Year_School_Female y=Estimated_gross_national_income_;
+run;
+
+data new; 
+    set country_analytic_file_raw;
+    numeric_var = input(Year_School_Female, best5.);
+
+    where
+=======
 	data=country_analytic_file_raw;
   	scatter x=Year_School_Female y=Estimated_gross_national_income_;
 run;
@@ -108,14 +133,16 @@ data new; set country_analytic_file_raw;
       
      where
      
+
         not(missing(Year_School_Female))
     ;
 run;
 
    
-data work; set country_analytic_file_raw;
-		Year_School_Female2 = input(Year_School_Female, best7.);
-		Estimated_income_fe = input(Estimated_gross_national_income_, best7.);
+data work; 
+    set country_analytic_file_raw;
+    Year_School_Female2 = input(Year_School_Female, best7.);
+    Estimated_income_fe = input(Estimated_gross_national_income_, best7.);
 run;
 
 proc corr
@@ -125,12 +152,6 @@ proc corr
     var
         Year_School_Female2
         Estimated_income_fe
-    ;
-run;
-    where
-        not(missing(Year_School_Female2))
-        and
-        not(Estimated_income_fe))
     ;
 run;
 
@@ -170,13 +191,21 @@ Followup Steps: To make a boxplot of the data to see the distribution of data
 * To sort the data in descending order to find the max value;
 
 proc sort 
+
+        data=country_analytic_file_raw
+    ;
+    by 
+        descending Population_in_severe_multidimens;
+
 	data=country_analytic_file_raw
    ;
    by 
 	descending Population_in_severe_multidimens;
+
 run;
 
 proc print;
+
 run;
 
 * clear titles/footnotes;
