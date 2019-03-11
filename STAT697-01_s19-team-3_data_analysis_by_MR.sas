@@ -37,21 +37,21 @@ footnote4 justify=left
 ;
 
 proc corr 
-	    data=work
-		nosimple
+    data=work
+    nosimple
     ;
-	var 
+    var 
         Inequality_in_education 
         Multidimensional_Poverty_Index
-    ;
+;
 run;
 
 
 proc sgplot data=country_analytic_file_raw;
-    scatter
+		scatter
         x=Inequality_in_education
         y=Multidimensional_Poverty_Index
-    ;
+;
 run;
 
 
@@ -82,25 +82,25 @@ title2 justify=left
 ;
 
 proc sql;
-   	select
-	 min(Mean_years_of_schooling_female) as min
-	,max(Mean_years_of_schooling_female) as max
-	,mean(Mean_years_of_schooling_female) as mean
-	,median(Mean_years_of_schooling_female) as median
+    select
+    min(Mean_years_of_schooling_female) as min
+    ,max(Mean_years_of_schooling_female) as max
+    ,mean(Mean_years_of_schooling_female) as mean
+    ,median(Mean_years_of_schooling_female) as median
     from
-	country_analytic_file_raw
-   	;
+        country_analytic_file_raw
+;
 quit;
 
 proc sql;
-   	select
-	 min(Mean_years_of_schooling_male) as min
-	,max(Mean_years_of_schooling_male) as max
-	,mean(Mean_years_of_schooling_male) as mean
-	,median(Mean_years_of_schooling_male) as median
+    select
+    min(Mean_years_of_schooling_male) as min
+    ,max(Mean_years_of_schooling_male) as max
+    ,mean(Mean_years_of_schooling_male) as mean
+    ,median(Mean_years_of_schooling_male) as median
     from
-	country_analytic_file_raw
-   	;
+        country_analytic_file_raw
+;
 quit;
 
 *******************************************************************************;
@@ -135,10 +135,10 @@ proc sgplot data=country_analytic_file_raw;
 run;
 
 proc corr 
-	data=country_analytic_file_raw
+    data=country_analytic_file_raw
     ;
-	var  
-        Population_living_below_national
+    var
+    Population_living_below_national
         HDI
     ;
 run;
