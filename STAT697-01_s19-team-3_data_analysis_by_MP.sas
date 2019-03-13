@@ -40,7 +40,7 @@ degre of association between the two variables and the type of relationship.
 ;
 
 
-title3 justify=left
+title3
 'Correlation analysis for Inequality in education and Multidimensional Poverty Index'
 ;
 
@@ -135,6 +135,7 @@ values of the data including the min, max, mean and median.
 
 Followup Steps: Display a visual of the summary statistics such as a boxplot to 
 further illustrate the difference between genders.
+;
 
 data work; 
     set country_analytic_file_raw;
@@ -142,7 +143,7 @@ data work;
         Mean_years_of_schooling_male1 = input(Mean_years_of_schooling_male, best7.);
 run;
 
-proc ttest;
+proc ttest data=work;
     paired Mean_years_of_schooling_male1*Mean_years_of_schooling_female1;
 run;
 
