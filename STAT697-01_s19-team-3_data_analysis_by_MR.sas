@@ -18,10 +18,13 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 Note: This compares the column "Inequality of Education" from 2018 Statistical 
 Annex Table 3 to the column "Multidimensional Poverty Index" from 2018 
 Statistical Annex Table 6.
+
 Limitations: Values denoted as ".." for the column "Inequality of Education" 
 should be excluded from analysis since it represents missing values.
+
 Methodology: Use proc corr to perform a correlation analysis, and illustrate 
 the absence or presence of a correlation using proc sgplot
+
 Followup Steps: Perform a formal linear regression analysis to measure the 
 degree of association between the two variables. 
 ;
@@ -93,12 +96,15 @@ footnote;
 *
 Note: This compares "Mean years of schooling" between males and females from 
 the 2018 Statistical Annex Table 4.
+
 Limitations: Values denoted as ".." should be excluded from the analysis since
 they represent missing values.
+
 Methodology: Use proc ttest to perform a paired comparison of group means
 between the two genders for mean years of schooling. Use proc report to create
 a table for Mean_years_schooling_female1 and Mean_years_schooling_male1, listing
 the min, max, mean and median. 
+
 Followup Steps: Display summary statistic visuals such as a boxplot to further
 illustrate the years of schooling difference between genders;
 
@@ -177,10 +183,13 @@ footnote;
 Note: This compares the column Population living below national poverty line 
 from the 2018 Statistical Annex Table 6 to the column HDI from 2018 Statistical 
 Annex Table 3.
+
 Limitations: The 10 missing values for column "Population living below 
 national poverty line" should be excluded from the analysis.
+
 Methodology: Use proc corr to perform a correlation analysis and proc
 sgplot to output a scatterplot to illustrate a test for correlation. 
+
 Followup Steps: Perform a formal linear regression analysis to measure the 
 degree of association and relationship between the two variables.
 ;
