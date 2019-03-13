@@ -30,31 +30,31 @@ degree of association between the two variables.
 ;
 
 title1 justify=left
-'Question: Is there sufficient evidence to indicate countries with a greater percent of education inequality also experience a greater percent of poverty?'
+	'Question: Is there sufficient evidence to indicate countries with a greater percent of education inequality also experience a greater percent of poverty?'
 ;
 
 title2 justify=left
-'Rationale: This would indicate if there is an assocation between eduaction inequality and poverty, and if education inequality can be an indicator of poverty in a country or vice versa.'
+	'Rationale: This would indicate if there is an assocation between eduaction inequality and poverty, and if education inequality can be an indicator of poverty in a country or vice versa.'
 ;
 
 title3 justify=left
-'Correlation of "Inequality in Education" and "Multidimensional Poverty Index"'
+	'Correlation of "Inequality in Education" and "Multidimensional Poverty Index"'
 ;
 
 footnote1 justify=left
-"Observation: There is a positive correlation between HDI and Population living below national poverty."
+	"Observation: There is a positive correlation between HDI and Population living below national poverty."
 ;
 
 footnote2 justify=left
-"Observation: Considering the correlation has a small R-squared value of 6.27 percent the absent values in our data and in subsequent data must be addressed. However, considering the small p-value (<0.001) the correlation between education inequality and MPI is significant. Thus, countries with a greater percent of education inequality also experience poverty and may be an indicator of it."
+	"Observation: Considering the correlation has a small R-squared value of 6.27 percent the absent values in our data and in subsequent data must be addressed. However, considering the small p-value (<0.001) the correlation between education inequality and MPI is significant. Thus, countries with a greater percent of education inequality also experience poverty and may be an indicator of it."
 ;
 
 footnote3 justify=left
-'This compares the column "Inequality of Education" from 2018 Statistical Annex Table 3 to the column "Multidimensional Poverty Index" from 2018 Statistical Annex Table 6.'
+	'This compares the column "Inequality of Education" from 2018 Statistical Annex Table 3 to the column "Multidimensional Poverty Index" from 2018 Statistical Annex Table 6.'
 ;
 
 footnote4 justify=left
-'Assuming both variables in our experiment follow a normal distribution the data analysis indicates a strong correlation between education inequality and MPI.'
+	'Assuming both variables in our experiment follow a normal distribution the data analysis indicates a strong correlation between education inequality and MPI.'
 ;
 
 
@@ -109,26 +109,26 @@ Followup Steps: Display summary statistic visuals such as a boxplot to further
 illustrate the years of schooling difference between genders;
 
 title1 justify=left
-'Question: Is there sufficient evidence to indicate a significant difference between the average number of years of schooling by gender across countries?'
+	'Question: Is there sufficient evidence to indicate a significant difference between the average number of years of schooling by gender across countries?'
 ;
 
 title2 justify=left
-'Rationale: This test has the potential to imply disadvantages between genders across countries.'
+	'Rationale: This test has the potential to imply disadvantages between genders across countries.'
 ;
 
 title3 justify=left
-'Correlation of "Inequality in Education" and "Multidimensional Poverty Index"'
+	'Correlation of "Inequality in Education" and "Multidimensional Poverty Index"'
 ;
 
 footnote1 justify=left
-'Mean years of schooling for males are 64.86% higher than female years of schooling if we assume the means are normally distributed. This observation can imply biased socioeconomic cultural practices that provides males an educational advantage over females. '
+	'Mean years of schooling for males are 64.86% higher than female years of schooling if we assume the means are normally distributed. This observation can imply biased socioeconomic cultural practices that provides males an educational advantage over females. '
 ;
 footnote2 justify=left
-'This compares Female and Male columns under "Mean years of schooling" from 2018 Statistical Annex Table 4.'
+	'This compares Female and Male columns under "Mean years of schooling" from 2018 Statistical Annex Table 4.'
 ;
 
 footnote3 justify=left
-'There is sufficent evidence to indicate a difference in the paired means of years of schooling between males and females via a small p-value (<0.001)'
+	'There is sufficent evidence to indicate a difference in the paired means of years of schooling between males and females via a small p-value (<0.001)'
 ;
 
 data work; 
@@ -145,11 +145,11 @@ title;
 footnote;
 
 title1
-'Summary statistics of mean years of schooling between males and females'
+	'Summary statistics of mean years of schooling between males and females'
 ;
 
 footnote1
-'Observation: The min, max, mean and median values for mean years of schooling per country are each higher for males than for females.'
+	'Observation: The min, max, mean and median values for mean years of schooling per country are each higher for males than for females.'
 ;
     
 proc report data=work;
@@ -194,31 +194,31 @@ Followup Steps: Perform a formal linear regression analysis to measure the
 degree of association and relationship between the two variables.
 ;
 title1 justify=left
-"Plot illustrating the negative correlation between % Population living below the income poverty line for 2006-2017 and HDI?"
+	"Plot illustrating the negative correlation between % Population living below the income poverty line for 2006-2017 and HDI?"
 ;
 
 title1 justify=left
-"Question: Can the % of population living below the income poverty line for 2006-2017 be used to predict a country's HDI?"
+	"Question: Can the % of population living below the income poverty line for 2006-2017 be used to predict a country's HDI?"
 ;
 
 title2 justify=left
-"Rationale: This has the potential to show us how poverty levels are associated with a country's Human Development Index."
+	"Rationale: This has the potential to show us how poverty levels are associated with a country's Human Development Index."
 ;
 
 title3 
-'Correlation analysis for Population living below national poverty line and HDI'
+	'Correlation analysis for Population living below national poverty line and HDI'
 ;
 
 footnote1 justify=left
-"There is a 68.5% negative correlation between HDI and Population living below national poverty. The correlation is significant with a small p-value (<0.001)."
+	"There is a 68.5% negative correlation between HDI and Population living below national poverty. The correlation is significant with a small p-value (<0.001)."
 ;
 
 footnote2 justify=left
-'This compares the column "Population_living_below_national_poverty_line" from 2018 Statistical Annex Table 6 to the column "HDI" from 2018 Statistical Annex Table 3.'
+	'This compares the column "Population_living_below_national_poverty_line" from 2018 Statistical Annex Table 6 to the column "HDI" from 2018 Statistical Annex Table 3.'
 ;
 
 footnote3 justify=left
-'Countries with populations below the national poverty line have a lower human development index.'
+	'Countries with populations below the national poverty line have a lower human development index.'
 ;
 
 
