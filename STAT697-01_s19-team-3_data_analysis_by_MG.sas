@@ -42,10 +42,12 @@ Followup Steps: Clear out any missing value.
 
 proc sort 
         data=country_analytic_file_raw (obs=5)
-        out = country_analystic_file_raw_Q1;
+        out = country_analystic_file_raw_Q1
     ;
     by 
-        descending adjusted_life_index;
+        descending 
+        adjusted_life_index
+    ;
 run;
     
 proc report data=country_analystic_file_raw_Q1;
@@ -96,13 +98,14 @@ variable;
 
 proc sgplot 
         data=country_analytic_file_raw;
-        scatter x=Year_School_Female y=Estimated_gross_national_income_;
+        scatter x=Year_School_Female y=Estimated_gross_national_income_
+        ;
 run;
 
 data new; 
     set country_analytic_file_raw;
-    numeric_var = input(Year_School_Female, best5.);
-
+    numeric_var = input(Year_School_Female, best5.)
+    ;
 run;
 
 data new; 
@@ -115,7 +118,8 @@ run;
 data work; 
     set country_analytic_file_raw;
     Year_School_Female2 = input(Year_School_Female, best7.);
-    Estimated_income_fe = input(Estimated_gross_national_income_, best7.);
+    Estimated_income_fe = input(Estimated_gross_national_income_, best7.)
+    ;
 run;
 
 proc corr
@@ -167,12 +171,13 @@ proc sort
         data=country_analytic_file_raw
     ;
     by 
-        descending Population_in_severe_multidimens;
+        descending 
+        Population_in_severe_multidimens
+    ;
 
 run;
 
 proc print;
-
 run;
 
 * clear titles/footnotes;
