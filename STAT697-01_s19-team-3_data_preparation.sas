@@ -189,6 +189,7 @@ quit;
 * build analytic dataset from raw datasets imported above, including only the
 columns and minimal data-cleaning/transformation needed to address each
 research questions/objectives in data-analysis files;
+
 proc sql;
     create table country_analytic_file_raw as
         select 
@@ -274,10 +275,9 @@ proc sql;
 quit;
 
 * check country_analytic_file_raw for rows whose unique id values are repeated or
-missing
-* after executing this data step, results show no repeated or missing primary 
-id values;
-*/
+missing and after executing this data step, results show no repeated or missing 
+primary id values;
+
 data country_raw_bad_ids;
     set country_analytic_file_raw;
     by Country;
@@ -291,6 +291,3 @@ data country_raw_bad_ids;
             output;
         end;
 run;
-
-
-
