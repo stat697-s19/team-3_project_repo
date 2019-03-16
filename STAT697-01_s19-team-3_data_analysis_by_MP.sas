@@ -139,7 +139,10 @@ further illustrate the difference between genders.
 
 data work; 
     set country_analytic_file_raw;
-        Mean_years_of_schooling_female1 = input(Mean_years_of_schooling_female, best7.);
+	if Mean_years_of_schooling_female ne '..' then
+        Mean_years_of_schooling_female1 = input(Mean_years_of_schooling_female, best7.)
+    ;
+    if Mean_years_of_schooling_male ne '..' then
         Mean_years_of_schooling_male1 = input(Mean_years_of_schooling_male, best7.);
 run;
 
