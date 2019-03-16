@@ -102,23 +102,12 @@ proc sgplot
         ;
 run;
 
-data new; 
-    set country_analytic_file_raw;
-    numeric_var = input(Year_School_Female, best5.)
-    ;
-run;
 
-data new; 
-    set country_analytic_file_raw;
-    numeric_var = input(Year_School_Female, best5.)
-    ;
-run;
-
-   
 data work; 
     set country_analytic_file_raw;
-    Year_School_Female2 = input(Year_School_Female, best7.);
-    Estimated_income_fe = input(Estimated_gross_national_income_, best7.)
+    if Year_School_Female and Estimated_gross_national_income_ ne '..' then
+        Year_School_Female2 = input(Year_School_Female, best7.);
+        Estimated_income_fe = input(Estimated_gross_national_income_, best7.)
     ;
 run;
 
