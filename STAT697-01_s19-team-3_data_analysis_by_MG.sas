@@ -47,6 +47,7 @@ proc sort
     by 
         descending 
         adjusted_life_index
+        HDI
     ;
 run;
     
@@ -55,6 +56,7 @@ proc report data=country_analystic_file_raw_Q1;
     columns
         Country
         adjusted_life_index
+        HDI
     ;
 run;
 
