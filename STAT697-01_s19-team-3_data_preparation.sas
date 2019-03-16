@@ -168,7 +168,7 @@ proc sql;
         from
             Statistical_2018_Annex_Table_6
         group by
-	    Country            
+        Country            
         having
             row_count_for_unique_id_value > 1
     ;
@@ -274,10 +274,10 @@ proc sql;
 quit;
 
 * check country_analytic_file_raw for rows whose unique id values are repeated or
-missing
-* after executing this data step, results show no repeated or missing primary 
+missing after executing this data step, results show no repeated or missing primary 
 id values;
-*/
+
+/*
 data country_raw_bad_ids;
     set country_analytic_file_raw;
     by Country;
@@ -291,6 +291,5 @@ data country_raw_bad_ids;
             output;
         end;
 run;
-
-
+;
 
