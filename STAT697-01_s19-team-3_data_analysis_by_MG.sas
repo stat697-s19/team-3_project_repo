@@ -107,10 +107,19 @@ run;
 
 data work; 
     set country_analytic_file_raw;
-    if Year_School_Female and Estimated_gross_national_income_ ne '..' then
-        Year_School_Female2 = input(Year_School_Female, best7.);
-        Estimated_income_fe = input(Estimated_gross_national_income_, best7.)
-    ;
+    if 
+        Year_School_Female  ne '..'
+    then
+        do;
+            Year_School_Female2 = input(Year_School_Female, best7.);
+        end;
+
+    if 
+        Estimated_gross_national_income_ ne '..'
+    then
+        do;
+            Estimated_income_fe = input(Estimated_gross_national_income_, best7.);
+        end;
 run;
 
 proc corr
