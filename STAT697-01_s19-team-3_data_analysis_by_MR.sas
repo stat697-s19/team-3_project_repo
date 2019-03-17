@@ -130,14 +130,23 @@ footnote2 justify=left
 footnote3 justify=left
     'There is sufficent evidence to indicate a difference in the paired means of years of schooling between males and females via a small p-value (<0.001)'
 ;
-
+/*
 data work; 
     set country_analytic_file_raw;
         Mean_years_of_schooling_female1 = input(Mean_years_of_schooling_female, best7.);
         Mean_years_of_schooling_male1 = input(Mean_years_of_schooling_male, best7.);
 run;
+*/
 
-proc ttest data=country_analytic_file_raw;;
+data work;
+	set country_analytic_file_raw;
+		if Mean_years_of_schooling_female ne '..' then
+		Mean_years_of_schooling_female1 = input(Mean_years_of_schooling_female, best7.);
+		if Mean_years_of_schooling_male ne '..' then
+        Mean_years_of_schooling_male1 = input(Mean_years_of_schooling_male, best7.);
+run;
+
+proc ttest data=work;
     paired Mean_years_of_schooling_male1*Mean_years_of_schooling_female1;
 run;
 
